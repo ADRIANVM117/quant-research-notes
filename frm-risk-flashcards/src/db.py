@@ -2,10 +2,14 @@ import sqlite3
 
 from src.config import DATABASE_PATH
 
+
+def get_connection():
+    return sqlite3.connect(DATABASE_PATH)
+
+
 def create_database():
 
-    conn = sqlite3.connect(DATABASE_PATH)
-
+    conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -45,6 +49,61 @@ def create_database():
     conn.close()
 
 
+def add_flashcard(chapter, topic, difficulty, question, answer):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    INSERT INTO flashcards (
+        chapter,
+        topic,
+        difficulty,
+        question,
+        answer
+    )
+    VALUES (?, ?, ?, ?, ?)
+    """, (chapter, topic, difficulty, question, answer))
+
+    conn.commit()
+    conn.close()
+
+
+def get_all_flashcards():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT 
+        id,
+        chapter,
+        topic,
+        difficulty,
+        question,
+        answer,
+        created_at
+    FROM flashcards
+    ORDER BY created_at DESC
+    """)
+
+    rows = cursor.fetchall()
+    conn.close()
+
+    return rows
+
+
+def delete_flashcard(flashcard_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    DELETE FROM flashcards
+    WHERE id = ?
+    """, (flashcard_id,))
+
+    conn.commit()
+    conn.close()
+
+
 if __name__ == "__main__":
     create_database()
-    print("Database created successfully.")
+    print("Database test completed successfully.")
