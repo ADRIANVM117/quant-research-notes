@@ -17,3 +17,14 @@ CHAPTERS = [
 
 # Exam Date
 EXAM_DATE = date(2026, 8, 9)
+
+DOMAINS = [
+    "FRM Part I"
+]
+
+FRM_PART_1_CHAPTERS = [
+    "Foundations of Risk Management",
+    "Quantitative Analysis",
+    "Financial Markets and Products",
+    "Valuation and Risk Models"
+]

@@ -15,11 +15,17 @@ def create_database():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS flashcards (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+        domain TEXT NOT NULL,
         chapter TEXT NOT NULL,
         topic TEXT NOT NULL,
-        difficulty TEXT NOT NULL,
+        learning_objective TEXT,
+
+        difficulty INTEGER NOT NULL,
+
         question TEXT NOT NULL,
         answer TEXT NOT NULL,
+
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
@@ -27,9 +33,12 @@ def create_database():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS reviews (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+
         flashcard_id INTEGER NOT NULL,
         review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
         rating INTEGER NOT NULL,
+
         FOREIGN KEY (flashcard_id)
         REFERENCES flashcards(id)
     )
@@ -38,7 +47,9 @@ def create_database():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS study_sessions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+
         session_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
         cards_reviewed INTEGER,
         accuracy REAL,
         duration_minutes REAL
@@ -49,20 +60,38 @@ def create_database():
     conn.close()
 
 
-def add_flashcard(chapter, topic, difficulty, question, answer):
+def add_flashcard(
+    domain,
+    chapter,
+    topic,
+    learning_objective,
+    difficulty,
+    question,
+    answer
+):
     conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute("""
     INSERT INTO flashcards (
+        domain,
         chapter,
         topic,
+        learning_objective,
         difficulty,
         question,
         answer
     )
-    VALUES (?, ?, ?, ?, ?)
-    """, (chapter, topic, difficulty, question, answer))
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (
+        domain,
+        chapter,
+        topic,
+        learning_objective,
+        difficulty,
+        question,
+        answer
+    ))
 
     conn.commit()
     conn.close()
@@ -73,10 +102,12 @@ def get_all_flashcards():
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT 
+    SELECT
         id,
+        domain,
         chapter,
         topic,
+        learning_objective,
         difficulty,
         question,
         answer,
@@ -106,4 +137,4 @@ def delete_flashcard(flashcard_id):
 
 if __name__ == "__main__":
     create_database()
-    print("Database test completed successfully.")
+    print("Database created successfully.")
