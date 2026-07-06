@@ -2,7 +2,7 @@ import streamlit as st
 
 from src.config import (
     DOMAINS,
-    FRM_PART_1_CHAPTERS
+    FRM_STRUCTURE
 )
 
 from src.db import add_flashcard
@@ -12,28 +12,36 @@ st.title("➕ Add Flashcard")
 
 st.markdown("---")
 
+# ==========================================
+# Domain
+# ==========================================
 
 domain = st.selectbox(
     "Domain",
     DOMAINS
 )
 
+# ==========================================
+# Chapter
+# ==========================================
 
 chapter = st.selectbox(
     "Chapter",
-    FRM_PART_1_CHAPTERS
+    list(FRM_STRUCTURE.keys())
 )
 
+# ==========================================
+# Topic (depends on Chapter)
+# ==========================================
 
-topic = st.text_input(
-    "Topic"
+topic = st.selectbox(
+    "Topic",
+    FRM_STRUCTURE[chapter]
 )
 
-
-learning_objective = st.text_input(
-    "Learning Objective"
-)
-
+# ==========================================
+# Difficulty
+# ==========================================
 
 difficulty_label = st.selectbox(
     "Difficulty",
@@ -44,7 +52,6 @@ difficulty_label = st.selectbox(
     ]
 )
 
-
 difficulty_mapping = {
     "Easy": 1,
     "Medium": 2,
@@ -53,42 +60,81 @@ difficulty_mapping = {
 
 difficulty = difficulty_mapping[difficulty_label]
 
+# ==========================================
+# LaTeX Help
+# ==========================================
+
+st.info("""
+**Markdown + LaTeX Supported**
+
+Inline formula:
+
+`$E(X)$`
+
+Block formula:
+
+$$
+P(A|B)=\\frac{P(B|A)P(A)}{P(B)}
+$$
+""")
 
 question = st.text_area(
     "Question",
-    height=120
-)
+    height=180,
+    placeholder="""Example:
 
+What is Bayes' Theorem?
+
+$$
+P(A|B)=?
+$$
+"""
+)
 
 answer = st.text_area(
     "Answer",
-    height=120
+    height=180,
+    placeholder="""Example:
+
+Bayes' Theorem:
+
+$$
+P(A|B)=
+\\frac{P(B|A)P(A)}
+{P(B)}
+$$
+"""
 )
 
+st.markdown("---")
+st.subheader(" Preview")
 
-if st.button("Save Flashcard"):
+if question.strip():
+    st.markdown("### ❓ Question")
+    st.markdown(question)
+else:
+    st.info("Question preview will appear here.")
 
-    if not topic:
-        st.error("Topic is required.")
+if answer.strip():
+    st.markdown("### ✅ Answer")
+    st.markdown(answer)
+else:
+    st.info("Answer preview will appear here.")
 
-    elif not question:
+if st.button("💾 Save Flashcard", use_container_width=True):
+    if not question.strip():
         st.error("Question is required.")
 
-    elif not answer:
+    elif not answer.strip():
         st.error("Answer is required.")
 
     else:
-
         add_flashcard(
-            domain=domain,
-            chapter=chapter,
-            topic=topic,
-            learning_objective=learning_objective,
-            difficulty=difficulty,
-            question=question,
-            answer=answer
-        )
-
-        st.success(
-            "Flashcard saved successfully."
-        )
+        domain=domain,
+        chapter=chapter,
+        topic=topic,
+        learning_objective="",
+        difficulty=difficulty,
+        question=question,
+        answer=answer)
+        st.success("Flashcard saved successfully.")
