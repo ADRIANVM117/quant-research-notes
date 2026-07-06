@@ -32,9 +32,20 @@ DOMAINS = [
 
 FRM_STRUCTURE = {
 
-    "Foundations of Risk Management": [
-        # Los agregaremos después
-    ],
+        "Foundations of Risk Management": [
+        "The Building Blocks of Risk Management",
+        "How Do Firms Manage Financial Risk?",
+        "The Governance of Risk Management",
+        "Credit Risk Transfer Mechanisms",
+        "Modern Portfolio Theory (MPT) and the Capital Asset Pricing Model (CAPM)",
+        "The Arbitrage Pricing Theory and Multifactor Models of Risk and Return",
+        "Principles for Effective Risk Data Aggregation and Risk Reporting",
+        "Enterprise Risk Management and Future Trends",
+        "Learning From Financial Disasters",
+        "Anatomy of the Great Financial Crisis of 2007-2009",
+        "GARP Code of Conduct"
+    ]
+,
 
     "Quantitative Analysis": [
 
@@ -70,11 +81,46 @@ FRM_STRUCTURE = {
 
     ],
 
-    "Financial Markets and Products": [
-        # Los agregaremos después
+        "Financial Markets and Products": [
+        "Banks",
+        "Insurance Companies and Pension Plans",
+        "Fund Management",
+        "Introduction to Derivatives",
+        "Exchanges and OTC Markets",
+        "Central Clearing",
+        "Futures Markets",
+        "Using Futures for Hedging",
+        "Foreign Exchange Markets",
+        "Pricing Financial Forwards and Futures",
+        "Commodity Forwards and Futures",
+        "Options Markets",
+        "Properties of Options",
+        "Trading Strategies",
+        "Exotic Options",
+        "Properties of Interest Rates",
+        "Corporate Bonds",
+        "Mortgages and Mortgage-Backed Securities",
+        "Interest Rate Futures",
+        "Swaps"
     ],
 
-    "Valuation and Risk Models": [
-        # Los agregaremos después
+        "Valuation and Risk Models": [
+        "Measures of Financial Risk",
+        "Calculating and Applying VaR",
+        "Measuring and Monitoring Volatility",
+        "External and Internal Credit Ratings",
+        "Country Risk",
+        "Measuring Credit Risk",
+        "Operational Risk",
+        "Stress Testing",
+        "Pricing Conventions, Discounting, and Arbitrage",
+        "Interest Rates",
+        "Bond Yields and Return Calculations",
+        "Applying Duration, Convexity, and DV01",
+        "Modeling and Hedging Non-Parallel Term Structure Shifts",
+        "Binomial Trees",
+        "The Black-Scholes-Merton Model",
+        "Option Sensitivity Measures: The “Greeks”"
     ]
+
 }
