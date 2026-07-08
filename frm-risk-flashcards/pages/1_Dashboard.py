@@ -32,6 +32,8 @@ def load_reviews():
 
     df = pd.read_sql_query(query, conn)
     conn.close()
+    df["review_date"] = pd.to_datetime(df["review_date"])
+    df["study_day"] = df["review_date"].dt.date
 
     return df
 
@@ -56,37 +58,93 @@ df_cards = pd.DataFrame(cards, columns=cards_columns)
 df_reviews = load_reviews()
 
 
-# ==========================================
 # Main Metrics
 # ==========================================
-
 days_until_exam = (EXAM_DATE - date.today()).days
 
 total_flashcards = len(df_cards)
 
-total_reviews = len(df_reviews)
+today = date.today()
 
-if total_reviews > 0:
-    accuracy = (df_reviews["rating"] >= 3).mean()
+today_reviews = df_reviews[df_reviews["study_day"] == today]
+
+cards_reviewed_today = len(today_reviews)
+
+if cards_reviewed_today > 0:
+    today_accuracy = (today_reviews["rating"] >= 3).mean()
 else:
-    accuracy = None
+    today_accuracy = None
 
 
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric("Days Until Exam", days_until_exam)
+col1.metric(
+    "Days Until Exam",
+    days_until_exam
+)
 
-col2.metric("Total Flashcards", total_flashcards)
+col2.metric(
+    "Total Flashcards",
+    total_flashcards
+)
 
-col3.metric("Cards Reviewed", total_reviews)
+col3.metric(
+    "Reviewed Today",
+    cards_reviewed_today
+)
 
-if accuracy is None:
-    col4.metric("Accuracy", "N/A")
+if today_accuracy is None:
+    col4.metric(
+        "Today's Accuracy",
+        "N/A"
+    )
 else:
-    col4.metric("Accuracy", f"{accuracy:.1%}")
-
+    col4.metric(
+        "Today's Accuracy",
+        f"{today_accuracy:.1%}"
+    )
 
 st.markdown("---")
+
+# Study History
+# ==========================================
+
+st.subheader("📈 Study History")
+
+if df_reviews.empty:
+
+    st.info("No study sessions yet.")
+
+else:
+
+    daily_stats = (
+        df_reviews
+        .assign(correct=df_reviews["rating"] >= 3)
+        .groupby("study_day")
+        .agg(
+            reviewed=("id", "count"),
+            accuracy=("correct", "mean")
+        )
+        .reset_index()
+        .sort_values("study_day")
+    )
+
+    daily_stats["accuracy"] *= 100
+    daily_stats["day"] = (pd.to_datetime(daily_stats["study_day"]).dt.strftime("%d-%b"))
+
+    col_left, col_right = st.columns(2)
+
+    with col_left:
+
+        st.markdown("#### Cards Reviewed")
+        st.bar_chart(daily_stats.set_index("day")["reviewed"])
+        
+
+    with col_right:
+
+        st.markdown("#### Accuracy (%)")
+        st.line_chart(daily_stats.set_index("day")["accuracy"])
+        
 
 
 # ==========================================
@@ -162,7 +220,7 @@ else:
         .size()
         .reset_index(name="flashcards")
         .sort_values("flashcards", ascending=False)
-    )
+    )   
 
     st.dataframe(
         topic_counts,
@@ -171,6 +229,8 @@ else:
 
 
 st.markdown("---")
+
+
 
 
 # ==========================================
