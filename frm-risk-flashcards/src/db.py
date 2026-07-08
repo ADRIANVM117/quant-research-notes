@@ -154,13 +154,21 @@ def get_flashcards_by_filters(
 
     conn = get_connection()
     cursor = conn.cursor()
-
     query = """
-    SELECT *
+    SELECT
+        id,
+        domain,
+        chapter,
+        topic,
+        learning_objective,
+        difficulty,
+        question,
+        answer,
+        image_path,
+        created_at
     FROM flashcards
     WHERE 1=1
     """
-
     params = []
 
     if domain:

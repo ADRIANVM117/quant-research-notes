@@ -47,6 +47,7 @@ cards_columns = [
     "difficulty",
     "question",
     "answer",
+    "image_path",
     "created_at"
 ]
 

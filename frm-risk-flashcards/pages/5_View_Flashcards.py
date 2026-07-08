@@ -17,11 +17,12 @@ columns = [
     "difficulty",
     "question",
     "answer",
+    "image_path",
     "created_at"
 ]
 
 df = pd.DataFrame(cards, columns=columns)
-
+df["Has Image"] = df["image_path"].apply(lambda x: "🖼️" if pd.notna(x) else "")
 if df.empty:
     st.info("No flashcards saved yet.")
 else:
@@ -53,7 +54,8 @@ else:
                 "learning_objective",
                 "difficulty",
                 "question",
-                "answer"
+                "answer",
+                "Has Image"
             ]
         ],
         use_container_width=True
