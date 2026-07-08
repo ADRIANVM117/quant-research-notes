@@ -31,6 +31,17 @@ def create_database():
     )
     """)
 
+    # MIGRATION: image_path
+    # -----------------------------------------------------
+    cursor.execute("PRAGMA table_info(flashcards)")
+    columns = [column[1] for column in cursor.fetchall()]
+
+    if "image_path" not in columns:
+        cursor.execute("""
+        ALTER TABLE flashcards
+        ADD COLUMN image_path TEXT
+        """)
+
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS reviews (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -73,7 +84,8 @@ def add_flashcard(
     learning_objective,
     difficulty,
     question,
-    answer
+    answer, 
+    image_path=None
 ):
 
     conn = get_connection()
@@ -87,9 +99,10 @@ def add_flashcard(
         learning_objective,
         difficulty,
         question,
-        answer
+        answer, 
+        image_path
     )
-    VALUES (?, ?, ?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         domain,
         chapter,
@@ -97,7 +110,8 @@ def add_flashcard(
         learning_objective,
         difficulty,
         question,
-        answer
+        answer, 
+        image_path
     ))
 
     conn.commit()
@@ -119,6 +133,7 @@ def get_all_flashcards():
         difficulty,
         question,
         answer,
+        image_path,
         created_at
     FROM flashcards
     ORDER BY created_at DESC
