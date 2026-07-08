@@ -1,7 +1,5 @@
 import streamlit as st
-from pathlib import Path
-import shutil
-from datetime import datetime
+from src.utils import save_uploaded_image
 from src.config import (
     DOMAINS,
     FRM_STRUCTURE
@@ -149,7 +147,9 @@ if answer.strip():
 else:
     st.info("Answer preview will appear here.") #---------------------
 
+
 if st.button("💾 Save Flashcard", use_container_width=True):
+
     if not question.strip():
         st.error("Question is required.")
 
@@ -157,12 +157,22 @@ if st.button("💾 Save Flashcard", use_container_width=True):
         st.error("Answer is required.")
 
     else:
+
+        image_path = save_uploaded_image(
+            uploaded_image,
+            chapter,
+            topic
+        )
+
         add_flashcard(
-        domain=domain,
-        chapter=chapter,
-        topic=topic,
-        learning_objective="",
-        difficulty=difficulty,
-        question=question,
-        answer=answer)
+            domain=domain,
+            chapter=chapter,
+            topic=topic,
+            learning_objective="",
+            difficulty=difficulty,
+            question=question,
+            answer=answer,
+            image_path=image_path
+        )
+
         st.success("Flashcard saved successfully.")
