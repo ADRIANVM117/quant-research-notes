@@ -1,5 +1,7 @@
 import streamlit as st
-
+from pathlib import Path
+import shutil
+from datetime import datetime
 from src.config import (
     DOMAINS,
     FRM_STRUCTURE
@@ -106,12 +108,38 @@ $$
 """
 )
 
+# ==========================================
+# Optional Image
+# ==========================================
+
+uploaded_image = st.file_uploader(
+    "📎 Upload image (optional)",
+    type=["png", "jpg", "jpeg"]
+)
+st.caption(
+    "Images are optional. Use them for diagrams, distributions, tables or figures."
+)
+
+if uploaded_image is not None:
+    st.image(
+        uploaded_image,
+        caption="Question Image",
+        use_container_width=True
+    )
+
+
 st.markdown("---")
 st.subheader(" Preview")
 
 if question.strip():
     st.markdown("### ❓ Question")
     st.markdown(question)
+    if uploaded_image is not None:
+        st.image(
+            uploaded_image,
+            use_container_width=True
+        )
+
 else:
     st.info("Question preview will appear here.")
 
@@ -119,7 +147,7 @@ if answer.strip():
     st.markdown("### ✅ Answer")
     st.markdown(answer)
 else:
-    st.info("Answer preview will appear here.")
+    st.info("Answer preview will appear here.") #---------------------
 
 if st.button("💾 Save Flashcard", use_container_width=True):
     if not question.strip():
