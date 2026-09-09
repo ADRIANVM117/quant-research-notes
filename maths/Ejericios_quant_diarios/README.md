@@ -17,4 +17,5 @@
   - 01 :Informacion predictiva  $ Market→\mathcal{F}_t​​→Features→E[rt+1​∣\mathcal{F}_t​]→Alpha→Portfolio→Execution $
   - 02 :<b> $\beta$ como exposición de mercado y construcción de  posiciones de portafolio </b>  
     - En research $ r=α+Xf+ε $  y su contraparte en portfolio: $ b=X^⊤w$  : La primera pregunta de dónde vinieron los retornos; la segunda pregunta qué riesgos/exposiciones estás construyendo con tus posiciones.
+  - 03 : <b> Una beta estimada no es una constante física. qué significa estimarla, qué incertidumbre tiene y qué ocurre cuando cambia el régimen </b>
 	​
