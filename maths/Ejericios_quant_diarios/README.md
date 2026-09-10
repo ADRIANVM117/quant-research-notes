@@ -19,7 +19,7 @@
   - 02 :<b> $\beta$ como exposición de mercado y construcción de  posiciones de portafolio </b>  
     - En research $ r=α+Xf+ε $  y su contraparte en portfolio: $ b=X^⊤w$  : La primera pregunta de dónde vinieron los retornos; la segunda pregunta qué riesgos/exposiciones estás construyendo con tus posiciones.
   - 03 : <b> Una beta estimada no es una constante física. qué significa estimarla, qué incertidumbre tiene y qué ocurre cuando cambia el régimen </b>
-  -04 : <b>microestructura y ejecución: Una señal puede ser estadísticamente real y aun así no ser económicamente operable después de spread, fees e impacto. </b>
+  - 04 : <b>microestructura y ejecución: Una señal puede ser estadísticamente real y aun así no ser económicamente operable después de spread, fees e impacto. </b>
      - distinción importante a lo que hemos construido :
      -  $\underbrace{E[r_{t+1} \mid \mathcal{F}_t]}_{\text{statistical alpha}} \longrightarrow \underbrace{\text{position}}_{\text{portfolio decision}} \longrightarrow \underbrace{\text{cost} + \text{execution}}_{\text{implementation}} \longrightarrow \boxed{\text{realized P\&L}}$
 
