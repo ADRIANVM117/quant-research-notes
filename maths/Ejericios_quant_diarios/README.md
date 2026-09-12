@@ -25,6 +25,7 @@
   - 05 : <b> separar una señal estadísticamente detectable de una señal económicamente útil y decidir si una hipótesis merece sobrevivir. </b>
      - $\boxed{\text{predictable}} \neq \boxed{\text{tradable}} \neq \boxed{\text{robust}}.$
      - $\mathcal{F}_t \rightarrow \text{Hypothesis} \rightarrow \text{Signal} \rightarrow \text{OOS} \rightarrow \text{Costs} \rightarrow \boxed{\text{Research Decision}} \rightarrow \text{Portfolio/Execution.}$
+     - Una señal  puede ser predictable estadísticamente, desaparecer después de costes y por tanto no ser tradable, o sobrevivir costes pero haber sido seleccionada entre tantas pruebas que todavía no tengas evidencia suficiente de que sea robust.
   - 06 : <b> Diagnóstico de research </b>
      - Aprender a decidir qué investigar después cuando un modelo OOS mejora, sin caer inmediatamente en más features o modelos
        - Tiene que ser falsable:
