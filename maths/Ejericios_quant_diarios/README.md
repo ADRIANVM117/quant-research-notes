@@ -22,4 +22,14 @@
   - 04 : <b>microestructura y ejecución: Una señal puede ser estadísticamente real y aun así no ser económicamente operable después de spread, fees e impacto. </b>
      - distinción importante a lo que hemos construido :
      -  $\underbrace{E[r_{t+1} \mid \mathcal{F}_t]}_{\text{statistical alpha}} \longrightarrow \underbrace{\text{position}}_{\text{portfolio decision}} \longrightarrow \underbrace{\text{cost} + \text{execution}}_{\text{implementation}} \longrightarrow \boxed{\text{realized P\&L}}$
-
+  - 05 : <b> separar una señal estadísticamente detectable de una señal económicamente útil y decidir si una hipótesis merece sobrevivir. </b>
+     - $\boxed{\text{predictable}} \neq \boxed{\text{tradable}} \neq \boxed{\text{robust}}.$
+     - $\mathcal{F}_t \rightarrow \text{Hypothesis} \rightarrow \text{Signal} \rightarrow \text{OOS} \rightarrow \text{Costs} \rightarrow \boxed{\text{Research Decision}} \rightarrow \text{Portfolio/Execution.}$
+  - 06 : <b> Diagnóstico de research </b>
+     - Aprender a decidir qué investigar después cuando un modelo OOS mejora, sin caer inmediatamente en más features o modelos
+       - Tiene que ser falsable:
+\[
+\boxed{\text{Si ocurre X, abandono } H_1.}
+\]
+     - $\text{OOS result} \rightarrow \boxed{\text{conditional diagnosis}} \rightarrow \text{competing explanations} \rightarrow \text{falsifiable experiment} \rightarrow \text{Keep/Kill}$
+  
