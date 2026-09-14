@@ -33,4 +33,7 @@
 \boxed{\text{Si ocurre X, abandono } H_1.}
 \]
      - $\text{OOS result} \rightarrow \boxed{\text{conditional diagnosis}} \rightarrow \text{competing explanations} \rightarrow \text{falsifiable experiment} \rightarrow \text{Keep/Kill}$
-  
+
+  - 07 : <b> incertidumbre en una estimación no es lo mismo que riesgo del mercado.    </b>
+     - Data→Estimate​→Uncertainty​→Decision.
+     - point estimate $ \neq $known parameter   
