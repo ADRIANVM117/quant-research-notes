@@ -37,3 +37,14 @@
   - 07 : <b> incertidumbre en una estimación no es lo mismo que riesgo del mercado.    </b>
      - Data→Estimate​→Uncertainty​→Decision.
      - point estimate $ \neq $known parameter   
+
+--- 
+
+3. <b>Semana 04 </b>
+
+> cómo tomar decisiones cuando los inputs son inciertos
+
+  - 01: <b> Un estimador estadísticamente más directo no necesariamente produce la mejor decisión económica. </b>
+
+     - $ \text{Data} \rightarrow \hat{\theta} \rightarrow \underbrace{\text{estimation uncertainty}}_{\text{ayer}} \rightarrow \boxed{\text{shrinkage}} \rightarrow \tilde{\theta} \rightarrow \text{Decision.}
+ $
