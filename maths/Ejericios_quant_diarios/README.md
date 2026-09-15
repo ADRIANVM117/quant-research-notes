@@ -48,3 +48,8 @@
 
      - $ \text{Data} \rightarrow \hat{\theta} \rightarrow \underbrace{\text{estimation uncertainty}}_{\text{ayer}} \rightarrow \boxed{\text{shrinkage}} \rightarrow \tilde{\theta} \rightarrow \text{Decision.}
  $
+  - 02 : <b> Actualización bayesiana ¿cuánto debería cambiar mi creencia cuando llegan datos nuevos? </b>
+     - Bayesian updating empieza a explicar **cuánto**:
+       - $$\text{Prior precision} + \text{Data precision} \rightarrow \text{Posterior}$$
+       - $$\text{evidence strength} \neq \text{effect magnitude.}$$
+ 
