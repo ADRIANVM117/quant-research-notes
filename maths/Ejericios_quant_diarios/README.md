@@ -53,3 +53,8 @@
        - $$\text{Prior precision} + \text{Data precision} \rightarrow \text{Posterior}$$
        - $$\text{evidence strength} \neq \text{effect magnitude.}$$
  
+  - 03 : <b> Una predicción no sólo debe tener una media; debería tener una distribución </b> 
+     - $ \text{point estimate} \rightarrow (\hat{\mu}, \, \text{uncertainty}) \rightarrow \boxed{\text{distribution}} \rightarrow \text{decision.} $
+
+     - $ (R,p) \rightarrow \text{Research View} \rightarrow (R,q). $
+ 
