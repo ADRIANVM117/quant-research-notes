@@ -1,7 +1,7 @@
 1. 
 ---
 ---
-2. <b> Semana 02 </b> 
+<b> Semana 02 </b> 
 > Volatilidad, actualizacion de creencias, Esperanza condicional, entropy pooling
   - 03: la varianza es lineal, la volatilidad no es lineal en el tiempo  
   - 04 : El orden de los retornos importa
@@ -12,7 +12,7 @@
 	​
 
 
-3.<b> Semana 03 </b>
+<b>Semana 03 </b>
 > mercados + series de tiempo + research 
   - 01 :Informacion predictiva  
     - $ Market→\mathcal{F}_t​​→Features→E[rt+1​∣\mathcal{F}_t​]→Alpha→Portfolio→Execution $
@@ -40,7 +40,7 @@
 
 --- 
 
-3. <b>Semana 04 </b>
+ <b>Semana 04 </b>
 
 > cómo tomar decisiones cuando los inputs son inciertos
 
@@ -57,4 +57,6 @@
      - $ \text{point estimate} \rightarrow (\hat{\mu}, \, \text{uncertainty}) \rightarrow \boxed{\text{distribution}} \rightarrow \text{decision.} $
 
      - $ (R,p) \rightarrow \text{Research View} \rightarrow (R,q). $
- 
+  - 04 : <b>Existen infinitos \(q\) que podrían satisfacer una view, así que ¿por qué elegir uno sobre los demás? Ésta es la entrada correcta a Entropy Pooling  </b>
+     - concretar : $ p \xrightarrow{\text{view}} \boxed{q^*} $
+        -  $ {q^* = \arg\min_q D_{KL}(q \| p) \quad \text{s.a. views}} $ 
