@@ -60,3 +60,14 @@
   - 04 : <b>Existen infinitos \(q\) que podrían satisfacer una view, así que ¿por qué elegir uno sobre los demás? Ésta es la entrada correcta a Entropy Pooling  </b>
      - concretar : $ p \xrightarrow{\text{view}} \boxed{q^*} $
         -  $ {q^* = \arg\min_q D_{KL}(q \| p) \quad \text{s.a. views}} $ 
+   - 05 <b> una view no sólo puede ser incierta; puede estar equivocada o entrar en conflicto con otra evidencia </b>
+     - \[
+\hat{\theta} \rightarrow \text{uncertainty} \rightarrow \text{shrinkage} \rightarrow \text{Bayesian updating} \rightarrow (R,p) \rightarrow \text{views} \rightarrow q^*
+\]
+
+     - hoy añadimos la pieza que evita convertir todo esto en matemática decorativa:
+
+       - \[
+\boxed{\text{evidence} \rightarrow \text{view} \rightarrow \text{decision} \rightarrow \text{falsification}}.
+\]
+ 
