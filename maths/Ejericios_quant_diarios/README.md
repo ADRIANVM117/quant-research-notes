@@ -43,6 +43,7 @@
  <b>Semana 04 </b>
 
 > Alpha aporta evidencia sobre oportunidades; Portfolio/Risk decide cuánto de esa evidencia es económicamente soportable dadas las dependencias, liquidez y riesgo actuales.
+>
 > $ informacion disponible→estimacion→incertidumbre→distribucion→dependencia→decision​.$
 
 
