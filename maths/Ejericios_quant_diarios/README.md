@@ -70,4 +70,10 @@
        - \[
 \boxed{\text{evidence} \rightarrow \text{view} \rightarrow \text{decision} \rightarrow \text{falsification}}.
 \]
+   - 06 <b> dependencia temporal y leakage: una estimación puede ser matemáticamente impecable y aun así ser información imposible de conocer en \(t\). </b>
+       - una decisión sólo puede condicionarse a información disponible en ese momento. 
+       - En portfolio escribíamos:
+          - $$ q(\cdot\mid\text{views disponibles en }t). $$
+       - En alpha research:
+          - $$ E[r_{t+1} ∣F_t] $$  
  
