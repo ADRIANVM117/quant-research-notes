@@ -42,7 +42,9 @@
 
  <b>Semana 04 </b>
 
-> cómo tomar decisiones cuando los inputs son inciertos
+> Alpha aporta evidencia sobre oportunidades; Portfolio/Risk decide cuánto de esa evidencia es económicamente soportable dadas las dependencias, liquidez y riesgo actuales.
+> $ informacion disponible→estimacion→incertidumbre→distribucion→dependencia→decision​.$
+
 
   - 01: <b> Un estimador estadísticamente más directo no necesariamente produce la mejor decisión económica. </b>
 
@@ -76,4 +78,6 @@
           - $$ q(\cdot\mid\text{views disponibles en }t). $$
        - En alpha research:
           - $$ E[r_{t+1} ∣F_t] $$  
+   - 07 <b> Riesgo condicional conocido en $t$ frente a error porque el régimen que estimaste dejó de representar el presente </b> 
+    - $ \underbrace{E[R_{t+1} \mid \mathcal{F}_t]}_{\text{Alpha}} \neq \underbrace{\mathcal{D}(R_{t+1} \mid \mathcal{F}_t)}_{\text{Risk state}}.$
  
