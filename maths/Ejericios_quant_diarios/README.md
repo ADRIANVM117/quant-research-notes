@@ -82,3 +82,14 @@
    - 07 <b> Riesgo condicional conocido en $t$ frente a error porque el régimen que estimaste dejó de representar el presente </b> 
     - $ \underbrace{E[R_{t+1} \mid \mathcal{F}_t]}_{\text{Alpha}} \neq \underbrace{\mathcal{D}(R_{t+1} \mid \mathcal{F}_t)}_{\text{Risk state}}.$
  
+--- 
+
+ <b>Semana 05 </b>
+
+> Riesgo de estrategia y portfolio desde P&L.
+> Pasar de medir riesgo a entender cómo una estrategia contribuye al riesgo total, cuándo el sizing debe cambiar y qué evidencia justificaría intervenir una estrategia live.
+
+   - 01 <b> Sharpe responde aproximadamente cuánto retorno recibiste por unidad de variabilidad. Drawdown responde algo diferente: qué ocurrió en el camino desde un máximo anterior. Y ninguno de los dos, por sí solo, demuestra que una hipótesis económica haya muerto. </b>
+      - $$ \boxed{\text{Alpha quality}} \neq \boxed{\text{Risk}} \neq \boxed{\text{Path}} $$
+
+
