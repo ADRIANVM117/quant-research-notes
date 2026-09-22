@@ -92,4 +92,8 @@
    - 01 <b> Sharpe responde aproximadamente cuánto retorno recibiste por unidad de variabilidad. Drawdown responde algo diferente: qué ocurrió en el camino desde un máximo anterior. Y ninguno de los dos, por sí solo, demuestra que una hipótesis económica haya muerto. </b>
       - $$ \boxed{\text{Alpha quality}} \neq \boxed{\text{Risk}} \neq \boxed{\text{Path}} $$
 
+   - 02 <b>¿de dónde viene realmente el riesgo del portfolio? No basta con conocer la volatilidad de cada estrategia; necesitamos entender su contribución marginal al riesgo total. </b>
+      - $$   \boxed{\text{Posición}} \neq \boxed{\text{Riesgo aportado}}   $$
+      - Ahora miramos  $$ w,\sum  \rightarrow \sigma_p \rightarrow \boxed{\text{RC}_i} $$
+
 
