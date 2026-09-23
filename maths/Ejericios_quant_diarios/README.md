@@ -95,5 +95,9 @@
    - 02 <b>¿de dónde viene realmente el riesgo del portfolio? No basta con conocer la volatilidad de cada estrategia; necesitamos entender su contribución marginal al riesgo total. </b>
       - $$   \boxed{\text{Posición}} \neq \boxed{\text{Riesgo aportado}}   $$
       - Ahora miramos  $$ w,\sum  \rightarrow \sigma_p \rightarrow \boxed{\text{RC}_i} $$
-
+   - 03 : <b>Un deterioro del estado de riesgo no necesariamente invalida Alpha. Puedes seguir creyendo que una señal tiene retorno esperado positivo y, al mismo tiempo, decidir que hoy merece menos capital porque su contribución marginal al riesgo cambió. </b>
+      - $$ \underbrace{\sigma_P}_{\text{¿cuánto riesgo?}} \quad \text{vs.} \quad \underbrace{RC_i}_{\text{¿quién produce el riesgo?}}$$
+      -  Un risk engine puede necesitar dos controles diferentes 
+           - $$ w \xrightarrow{\text{Risk Budget}} \tilde{w} \xrightarrow{\text{Vol Target}} k\tilde{w} $$ 
+ 
 
