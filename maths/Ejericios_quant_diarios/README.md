@@ -99,5 +99,10 @@
       - $$ \underbrace{\sigma_P}_{\text{¿cuánto riesgo?}} \quad \text{vs.} \quad \underbrace{RC_i}_{\text{¿quién produce el riesgo?}}$$
       -  Un risk engine puede necesitar dos controles diferentes 
            - $$ w \xrightarrow{\text{Risk Budget}} \tilde{w} \xrightarrow{\text{Vol Target}} k\tilde{w} $$ 
- 
+   - 04 : <b>       - El punto de hoy es especialmente importante para el Quant Desk. Hemos pasado de: $$ \text{“tengo una señal”} $$ a $$ \text{“¿cuanto deber a apostar?”} $$
+ </b>
+      - $$\hat{\mu} \rightarrow \underbrace{\text{uncertainty adjustment}}_{\text{¿cuánto confío?}} \rightarrow \underbrace{\text{portfolio interaction}}_{\Sigma} \rightarrow \underbrace{\text{risk budget}}_{RC_i} \rightarrow \underbrace{\text{vol target}}_{\sigma_P} \rightarrow \underbrace{\text{liquidity/execution}}_{\text{¿puedo operarlo?}} $$
+         - Una posición grande requiere no sólo alpha elevado, sino suficiente evidencia para confiar en él y capacidad del portfolio para absorber ese riesgo.
+         - $$\boxed{\text{strong signal} \neq \text{large position automatically.}}$$
+  
 
