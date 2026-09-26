@@ -109,4 +109,9 @@
      -   P&L attribution causal: antes de tocar una hipótesis, identifica qué transformación entre Research y P&L dejó de comportarse como esperabas.
       
       - $$\text{Research hypothesis} \rightarrow \hat{\alpha} \rightarrow \text{Sizing} \rightarrow w \rightarrow \text{Risk} \rightarrow \text{Orders} \rightarrow \text{Execution} \rightarrow \boxed{P\&L}.$$
-
+   - 06 : <b> Microestructura + ejecución + research </b>
+      - $$ precio\ observado \neq precio\ econ\text{ó}micamente\ ejecutable $$ 
+      - incorporar una idea importante a la forma de pensar:
+      \[\text{statistical predictability} \neq \text{tradable alpha}\]
+      - $ \text{Market Data} \rightarrow \boxed{\text{Microstructure Features}} \rightarrow \text{Alpha} \rightarrow \text{Portfolio/Risk} \rightarrow \text{Execution.}$
+ 
