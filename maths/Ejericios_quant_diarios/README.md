@@ -105,4 +105,8 @@
          - Una posición grande requiere no sólo alpha elevado, sino suficiente evidencia para confiar en él y capacidad del portfolio para absorber ese riesgo.
          - $$\boxed{\text{strong signal} \neq \text{large position automatically.}}$$
   
+   - 05 : <B>Diagnóstico de un sistema live. Un P&L malo es una observación, no una explicación. EL deber ser es localizar qué capa está fallando antes de tocar el modelo. </b>
+     -   P&L attribution causal: antes de tocar una hipótesis, identifica qué transformación entre Research y P&L dejó de comportarse como esperabas.
+      
+      - $$\text{Research hypothesis} \rightarrow \hat{\alpha} \rightarrow \text{Sizing} \rightarrow w \rightarrow \text{Risk} \rightarrow \text{Orders} \rightarrow \text{Execution} \rightarrow \boxed{P\&L}.$$
 
