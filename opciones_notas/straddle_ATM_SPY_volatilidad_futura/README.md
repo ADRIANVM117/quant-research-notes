@@ -1,53 +1,42 @@
-# Precio del straddle ATM de SPY y volatilidad futura
+# Precio del straddle ATM de SPY y movimiento futuro
 
-Proyecto de investigación cuantitativa sobre la información contenida en los precios de opciones SPY.
+**Estado:** preparación metodológica y auditoría de datos. No existe aún una señal, pago calculado, métrica predictiva ni evaluación de desempeño.
 
-**Estado:** preparación de datos. La hipótesis predictiva aún no se ha evaluado. Este proyecto no es una estrategia de trading ni un backtest de rentabilidad de straddles.
+## Pregunta central
 
-## Pregunta
-
-¿El costo relativo de un straddle ATM de SPY, con vencimiento cercano a 30 días calendario, ordena la volatilidad realizada de las próximas 20 sesiones mejor que `vol20` observada hoy?
-
-Un straddle ATM combina una call y una put del mismo strike y vencimiento. Su costo relativo será el precio conjunto de ambas opciones expresado respecto al precio contemporáneo de SPY. La construcción exacta de esa serie todavía no está fijada.
+¿El costo relativo de un straddle ATM de SPY anticipa el movimiento absoluto de SPY hasta su vencimiento mejor que una estimación basada solo en retornos históricos?
 
 ## Hipótesis económica
 
-Los precios de opciones incorporan el costo que el mercado asigna a movimientos futuros. Por ello, el precio de un straddle cercano al dinero podría contener información sobre volatilidad futura que no está completamente representada en los últimos 20 retornos.
+El precio conjunto de una call y una put del mismo strike y vencimiento puede contener información sobre la magnitud del movimiento futuro que no está completa en los retornos pasados. Tanto el costo del par como el movimiento observado se expresarán respecto al precio de SPY conocido en la fecha de observación.
 
-El precio también depende del plazo, la distancia al strike, las tasas, los dividendos y las primas por riesgo. No lo llamaremos volatilidad implícita pura ni interpretaremos un buen resultado predictivo como evidencia de que comprar el straddle sea rentable.
+El precio también refleja plazo, moneyness, tasas, dividendos, liquidez y primas por riesgo. Una relación predictiva no demostraría que negociar el straddle sea rentable.
 
-## Datos disponibles
+## Cambio trazable de pregunta
 
-Las cadenas históricas de opciones SPY proceden de Alpha Vantage y están archivadas en `HMM_regime_options/data/raw/`. Este proyecto las consulta sin duplicarlas; `docs/data_inventory.md` documenta las rutas y su procedencia.
+El antecedente de esta fase preguntaba si el costo del straddle informaba mejor la **volatilidad realizada de las próximas 20 sesiones** que `vol20`. Esa pregunta queda descartada para esta fase, sin borrar sus auditorías.
 
-La auditoría registró 1,674 sesiones entre 2020-01-02 y 2026-08-31. La auditoría de pares call–put reportó al menos un straddle candidato con vencimiento de 27–33 días en 1,673 sesiones. Esos conteos demuestran cobertura inicial de datos, no capacidad predictiva.
+La pregunta actual usa el movimiento absoluto hasta el vencimiento porque corresponde de forma más directa al pago terminal de un straddle que la desviación estándar de veinte retornos diarios. El valor intrínseco al vencimiento no se llamará P&L de una operación real: SPY tiene opciones americanas y las cotizaciones archivadas no prueban ejecución simultánea de call y put.
 
-Se reportaron 9,282 registros repetidos por `contractID` dentro de sus sesiones; todos eran idénticos. La construcción reproducible deberá documentar su eliminación.
+## Datos y auditorías existentes
 
-## Por qué cambió el alcance
+Las cadenas originales de SPY permanecen archivadas en `../../HMM_regime_options/data/raw/` y se consultan en modo lectura, sin duplicarlas. La auditoría de pares encontró al menos un straddle candidato de 27–33 DTE en 1,673 de 1,674 sesiones entre 2020-01-02 y 2026-08-31; los 9,282 `contractID` repetidos eran idénticos.
 
-La primera pregunta del proyecto se refería a la volatilidad implícita (IV) cercana a 30 días. Sin embargo, una sonda de 343,228 contratos únicos mostró solo 89 valores distintos de IV proporcionada por el proveedor. Esa resolución no se aceptó sin más como señal principal.
+La IV del proveedor no se usará como señal principal: la auditoría mostró una escalera de valores repetidos. Las notebooks y reportes de esas auditorías se conservan.
 
-Reconstruir IV históricamente desde bid/ask quedó pendiente porque faltan tasas y dividendos futuros conocidos en cada fecha de observación para un tratamiento adecuado de las opciones SPY de ejercicio americano. Conservamos esas auditorías en `docs/`; el nuevo objeto de estudio es el precio observado del par call–put.
+## Reglas aún abiertas
 
-## Siguiente entregable
+Antes de cualquier cálculo futuro deben fijarse, sin mirar resultados:
 
-Una notebook ejecutada mostrará pares identificables por fecha y `contractID`, su cercanía ATM, vencimiento, bid/ask, punto medio y spreads. Los cálculos reutilizables estarán en scripts; la notebook mostrará código ejecutado, resultados, interpretación y espacio para notas del investigador.
-
-Antes de evaluar la hipótesis deben fijarse la regla exacta de selección del par, el control de spreads, el tratamiento de fechas sin par, la construcción de la variable futura y la comparación con `vol20`. Todavía no existe una serie diaria definitiva ni resultados predictivos para este proyecto.
+- selección definitiva del par ATM y DTE;
+- filtros y tratamiento de spreads;
+- construcción del benchmark de retornos históricos para el mismo horizonte hasta vencimiento;
+- precio de SPY al vencimiento y reglas para vencimientos sin precio disponible;
+- tratamiento de ausencias, duplicados y cambios de vencimiento;
+- evaluación y separación temporal, en particular porque 2024–2026 ya fue visto.
 
 ## Límites
 
-- Las cadenas tienen fecha, pero no una hora verificable de cotización o publicación. Usarlas para una decisión en la siguiente sesión supone disponibilidad EOD aún no verificada.
-- Bid y ask archivados no demuestran que call y put pudieran negociarse simultáneamente a esos precios.
-- El periodo 2024–2026 ya fue examinado en el proyecto HMM anterior. Una evaluación histórica aquí no debe presentarse como confirmación prospectiva intacta.
-- Las reglas de construcción y evaluación deberán registrarse antes de mirar el resultado predictivo. La ausencia de evidencia favorable también será un resultado del proyecto.
-
-## Organización
-
-- `docs/data_inventory.md`: rutas y procedencia de datos.
-- `docs/`: auditorías de factibilidad y de resolución de IV.
-- `scripts/`: cálculos reproducibles.
-- `notebooks/`: código ejecutado, resultados visibles e interpretación.
-
-Los archivos originales de opciones permanecen fuera de esta carpeta. Cualquier reproducción deberá indicar su ubicación local.
+- La hora de cotización/publicación no es verificable en las cadenas. Usar información de `t` para una decisión posterior en `t+1` sigue siendo un supuesto EOD no verificado.
+- Bid y ask archivados no prueban ejecución simultánea ni precios negociables para ambos lados.
+- Los archivos originales no se modifican desde este proyecto.
