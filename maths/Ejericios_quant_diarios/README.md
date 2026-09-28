@@ -114,4 +114,11 @@
       - incorporar una idea importante a la forma de pensar:
       \[\text{statistical predictability} \neq \text{tradable alpha}\]
       - $ \text{Market Data} \rightarrow \boxed{\text{Microstructure Features}} \rightarrow \text{Alpha} \rightarrow \text{Portfolio/Risk} \rightarrow \text{Execution.}$
- 
+
+---
+
+<b> semana 06 </b>
+> Estadística de research  : $\text{encontré una señal} \neq \text{descubrí alpha}$
+   - 01 : <b>Multiple testing / selection bias: qué ocurre cuando pruebas muchas estrategias y reportas únicamente la ganadora. </b>
+     - El problema aparece cuando haces: $$\text{search} \rightarrow \text{selection} \rightarrow \text{evaluation sobre la misma información}$$
+     - y después interpretas al ganador como si hubiera sido tu única hipótesis desde el principio.
