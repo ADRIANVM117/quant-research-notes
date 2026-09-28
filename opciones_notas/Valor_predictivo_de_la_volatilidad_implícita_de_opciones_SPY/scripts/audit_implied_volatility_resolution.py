@@ -26,6 +26,7 @@ PROBE_DTE_MIN = 21
 PROBE_DTE_MAX = 45
 PROBE_ABS_MONEYNESS_MAX = 0.02
 TRACE_DATES = ("2020-01-02", "2022-10-03", "2025-04-03")
+IV_RECONSTRUCTION_PROBE_DATES = TRACE_DATES
 
 
 def _read_payload(path: Path) -> dict[str, Any]:
@@ -196,6 +197,75 @@ def audit_iv_resolution() -> dict[str, Any]:
         "by_year": pd.DataFrame(year_rows),
         "examples": examples,
     }
+
+
+def iv_reconstruction_probe() -> pd.DataFrame:
+    """Return a fixed, small ATM/30-DTE price-inversion probe.
+
+    Contract selection is set before looking at any price inversion: choose the
+    expiration whose DTE is closest to 30 (earliest expiration breaks a tie),
+    then the closest strike to the unadjusted SPY close separately for a call
+    and a put (lower strike, then contract ID, break ties).  This function
+    intentionally does *not* calculate implied volatility because the local
+    repository has no dated risk-free curve nor a forward dividend schedule.
+    """
+
+    prices = pd.read_csv(PRICE_PATH, parse_dates=["date"]).set_index("date")
+    rows: list[dict[str, Any]] = []
+    for date_string in IV_RECONSTRUCTION_PROBE_DATES:
+        date = pd.Timestamp(date_string)
+        price_row = prices.loc[date]
+        source_files = sorted(
+            list(RAW_DIR.glob(f"spy_historical_options_{date_string}.json.gz"))
+            + list(RAW_DIR.glob(f"spy_historical_options_{date_string}.json"))
+        )
+        if len(source_files) != 1:
+            raise FileNotFoundError(f"Expected exactly one raw chain for {date_string}; found {len(source_files)}")
+        source_file = source_files[0]
+        records = _read_payload(source_file).get("data", [])
+        eligible: list[tuple[int, dict[str, Any]]] = []
+        for record in records:
+            try:
+                dte = (pd.Timestamp(record["expiration"]) - date).days
+                if dte > 0 and record.get("type") in {"call", "put"}:
+                    eligible.append((dte, record))
+            except (KeyError, TypeError, ValueError):
+                continue
+        dtes = sorted({dte for dte, _ in eligible})
+        selected_dte = min(dtes, key=lambda value: (abs(value - 30), value))
+        for option_type in ("call", "put"):
+            contracts = [record for dte, record in eligible if dte == selected_dte and record["type"] == option_type]
+            contract = min(
+                contracts,
+                key=lambda record: (
+                    abs(float(record["strike"]) / float(price_row["close"]) - 1.0),
+                    float(record["strike"]),
+                    str(record.get("contractID")),
+                ),
+            )
+            bid = float(contract["bid"])
+            ask = float(contract["ask"])
+            rows.append({
+                "observation_date": date_string,
+                "source_file": str(source_file),
+                "spot_close_unadjusted": float(price_row["close"]),
+                "same_day_recorded_dividend": float(price_row["dividend_amount"]),
+                "same_day_split_coefficient": float(price_row["split_coefficient"]),
+                "risk_free_curve_available_at_t": False,
+                "forward_dividend_schedule_available_at_t": False,
+                "contractID": contract.get("contractID"),
+                "type": option_type,
+                "expiration": contract.get("expiration"),
+                "dte": selected_dte,
+                "strike": float(contract["strike"]),
+                "bid": bid,
+                "ask": ask,
+                "midpoint": (bid + ask) / 2,
+                "provider_iv_raw": contract.get("implied_volatility"),
+                "delta": contract.get("delta"),
+                "inversion_status": "BLOCKED: missing dated risk-free curve and forward dividend schedule",
+            })
+    return pd.DataFrame(rows)
 
 
 if __name__ == "__main__":
