@@ -1,42 +1,55 @@
-# Precio del straddle ATM de SPY y movimiento futuro
+# Straddle ATM SPY y movimiento terminal
 
-**Estado:** preparación metodológica y auditoría de datos. No existe aún una señal, pago calculado, métrica predictiva ni evaluación de desempeño.
+**Estado: CERRADO.** La evaluación descrita abajo es la única evaluación exploratoria del proyecto. No se añadieron comparadores, variantes, filtros ni experimentos posteriores.
 
-## Pregunta central
+## Pregunta e hipótesis económica
 
-¿El costo relativo de un straddle ATM de SPY anticipa el movimiento absoluto de SPY hasta su vencimiento mejor que una estimación basada solo en retornos históricos?
+**Pregunta.** ¿El costo relativo de un straddle ATM de SPY anticipa el movimiento absoluto de SPY hasta su vencimiento mejor que una estimación basada solo en retornos históricos?
 
-## Hipótesis económica
+**Hipótesis.** El precio conjunto de una call y una put del mismo strike y vencimiento puede contener información sobre la magnitud del movimiento futuro que no está completa en los retornos pasados. Tanto el costo del par como el movimiento terminal se expresan respecto al precio SPY conocido en la fecha de observación.
 
-El precio conjunto de una call y una put del mismo strike y vencimiento puede contener información sobre la magnitud del movimiento futuro que no está completa en los retornos pasados. Tanto el costo del par como el movimiento observado se expresarán respecto al precio de SPY conocido en la fecha de observación.
+## Definiciones evaluadas
 
-El precio también refleja plazo, moneyness, tasas, dividendos, liquidez y primas por riesgo. Una relación predictiva no demostraría que negociar el straddle sea rentable.
+- **Predictor straddle:** para el par call–put del mismo strike y vencimiento ya seleccionado, con 27–33 DTE, cotizaciones válidas y spread relativo de cada lado ≤10%, `straddle_mid_rel_t = (call_mid + put_mid) / SPY_close_t`. No es volatilidad implícita.
+- **Benchmark histórico:** `historical_move_baseline_t` es el promedio de las últimas 252 ventanas históricas completas de horizonte `H`, donde `H` es el número de sesiones entre `t` y el vencimiento `T`; cada ventana es `abs(SPY_close_u / SPY_close_(u-H) - K / SPY_close_t)` y termina en `u ≤ t`.
+- **Movimiento terminal:** `terminal_move_rel = abs(SPY_close_T - K) / SPY_close_t`, con cierre sin ajustar observado exactamente en `T`. Es el valor intrínseco conjunto relativo al vencimiento, no P&L realizado.
 
-## Cambio trazable de pregunta
+## Separación y resultado exploratorio
 
-El antecedente de esta fase preguntaba si el costo del straddle informaba mejor la **volatilidad realizada de las próximas 20 sesiones** que `vol20`. Esa pregunta queda descartada para esta fase, sin borrar sus auditorías.
+El desarrollo usó 715 observaciones con resultado conocido y `T ≤ 2023-12-29`. Los coeficientes de dos regresiones lineales simples con intercepto se congelaron allí; cualquier predicción negativa se truncó a cero para ambos modelos.
 
-La pregunta actual usa el movimiento absoluto hasta el vencimiento porque corresponde de forma más directa al pago terminal de un straddle que la desviación estándar de veinte retornos diarios. El valor intrínseco al vencimiento no se llamará P&L de una operación real: SPY tiene opciones americanas y las cotizaciones archivadas no prueban ejecución simultánea de call y put.
+La evaluación histórica común contiene 648 fechas de `t` entre 2024-01-02 y 2026-08-03, con vencimientos observados hasta 2026-08-31:
 
-## Datos y auditorías existentes
+| Predictor calibrado | MSE | RMSE | MAE |
+|---|---:|---:|---:|
+| Benchmark histórico | 0.00071901 | 0.02681443 | 0.02148072 |
+| Straddle | 0.00051880 | 0.02277725 | 0.01808196 |
 
-Las cadenas originales de SPY permanecen archivadas en `../../HMM_regime_options/data/raw/` y se consultan en modo lectura, sin duplicarlas. La auditoría de pares encontró al menos un straddle candidato de 27–33 DTE en 1,673 de 1,674 sesiones entre 2020-01-02 y 2026-08-31; los 9,282 `contractID` repetidos eran idénticos.
+La diferencia `MSE_baseline - MSE_straddle` fue 0.00020021: una reducción de MSE de **27.8%** frente a este benchmark. El IC exploratorio de 95% por bootstrap de bloques de 30 fechas (5,000 réplicas; semilla 20260927) fue **[0.00011880, 0.00033096]**.
 
-La IV del proveedor no se usará como señal principal: la auditoría mostró una escalera de valores repetidos. Las notebooks y reportes de esas auditorías se conservan.
+## Auditoría del benchmark
 
-## Reglas aún abiertas
+La pendiente OLS de desarrollo del benchmark fue −0.15284988. La auditoría independiente de sus 715 filas verificó el linaje contra el CSV terminal original, `H`, `K / SPY_close_t`, las 252 ventanas, sus fechas, el límite de cierres `≤ t`, los splits y los promedios. No encontró un error de construcción. La pendiente negativa queda como relación empírica descriptiva de esa muestra bajo la definición congelada; no justifica cambiar el benchmark después de verla.
 
-Antes de cualquier cálculo futuro deben fijarse, sin mirar resultados:
+## Alcance de la conclusión
 
-- selección definitiva del par ATM y DTE;
-- filtros y tratamiento de spreads;
-- construcción del benchmark de retornos históricos para el mismo horizonte hasta vencimiento;
-- precio de SPY al vencimiento y reglas para vencimientos sin precio disponible;
-- tratamiento de ausencias, duplicados y cambios de vencimiento;
-- evaluación y separación temporal, en particular porque 2024–2026 ya fue visto.
+El resultado favorece al predictor straddle **frente a este benchmark histórico** en una evaluación histórica exploratoria. No demuestra superioridad frente a cualquier método histórico, rentabilidad de comprar opciones ni validez prospectiva. El periodo 2024–2026 ya había sido visto y no es una prueba prospectiva intacta.
 
-## Límites
+Persisten límites materiales:
 
-- La hora de cotización/publicación no es verificable en las cadenas. Usar información de `t` para una decisión posterior en `t+1` sigue siendo un supuesto EOD no verificado.
-- Bid y ask archivados no prueban ejecución simultánea ni precios negociables para ambos lados.
-- Los archivos originales no se modifican desde este proyecto.
+- la disponibilidad EOD de la cadena antes de una decisión posterior es un supuesto no verificado;
+- SPY tiene opciones americanas;
+- bid y ask archivados no demuestran ejecución simultánea de call y put;
+- por ello, prima y valor intrínseco no se interpretan como P&L de una operación real.
+
+## Formulación breve para CV
+
+> Diseñé una investigación reproducible con cadenas históricas de opciones SPY: construí un predictor descriptivo de costo relativo de straddle ATM, lo comparé con un benchmark de movimiento histórico en una separación temporal congelada y audité el linaje de datos, el no-look-ahead y las limitaciones de ejecución. El resultado exploratorio favoreció al straddle frente al benchmark especificado, sin presentarlo como evidencia de rentabilidad ni validación prospectiva.
+
+## Artefactos principales
+
+- `docs/straddle_terminal_move_exploratory_protocol_2026-09-27.md`: protocolo congelado.
+- `reports/straddle_terminal_move_exploratory_evaluation.md`: resultado exploratorio.
+- `reports/historical_baseline_negative_slope_audit.md`: auditoría de la pendiente negativa.
+- `notebooks/06_straddle_terminal_move_exploratory_evaluation.ipynb`: evaluación visible.
+- `notebooks/07_historical_baseline_negative_slope_audit.ipynb`: auditoría visible.
