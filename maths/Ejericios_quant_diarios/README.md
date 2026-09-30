@@ -122,3 +122,14 @@
    - 01 : <b>Multiple testing / selection bias: qué ocurre cuando pruebas muchas estrategias y reportas únicamente la ganadora. </b>
      - El problema aparece cuando haces: $$\text{search} \rightarrow \text{selection} \rightarrow \text{evaluation sobre la misma información}$$
      - y después interpretas al ganador como si hubiera sido tu única hipótesis desde el principio.
+   - 02 : <B> Distinción previa mucho más importante para tu formación como researcher: </b> $$\text{multiple testing} \neq \text{overfitting} \neq \text{data snooping}$$
+
+     - Los tres pueden producir un backtest extraordinario que desaparece live, pero **el mecanismo que genera el falso descubrimiento es diferente**. Hoy vas a aprender a diagnosticar cuál ocurrió. 
+
+       - \[\text{qué se intentó} \rightarrow \text{qué resultados se observaron} \rightarrow \text{qué cambió después} \rightarrow \text{qué información permanecio intacta}\]
+
+      - Por eso el `RESEARCH_LOG` que vienes construyendo en tu forma de trabajar no debería verse como documentación secundaria. Forma parte de la **validez estadística del research**. cómo conecta con lo  ayer:
+
+        - $ \text{exploration} \rightarrow \text{selection} \rightarrow \text{freeze} \rightarrow \text{untouched OOS.} $
+
+
