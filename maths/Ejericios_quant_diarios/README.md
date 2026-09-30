@@ -132,4 +132,15 @@
 
         - $ \text{exploration} \rightarrow \text{selection} \rightarrow \text{freeze} \rightarrow \text{untouched OOS.} $
 
+   - 03 : <b>Flujo de información </b> Un dataset puede estar cronológicamente en el futuro y aun así dejar de ser OOS:
+
+    
+      - $$D_{OOS} \rightarrow \text{observación} \rightarrow \text{decisión} \rightarrow \text{nueva estrategia}.$$
+    
+         - Desde ese momento: $\text{D}_{OOS}\text{ ya participó en el proceso de selección.}$
+
+     - Esto explica algo importante para la metodología de Quant Research: OOS no debería ser una etiqueta permanente de un archivo. Debería ser un estado dentro del proceso de investigación.
+     
+     $$\text{Multiple Testing} \rightarrow \text{Selection Bias} \rightarrow \text{Data Snooping} \rightarrow \text{Repeated OOS Selection}.$$
+ 
 
