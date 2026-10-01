@@ -142,5 +142,24 @@
      - Esto explica algo importante para la metodología de Quant Research: OOS no debería ser una etiqueta permanente de un archivo. Debería ser un estado dentro del proceso de investigación.
      
      $$\text{Multiple Testing} \rightarrow \text{Selection Bias} \rightarrow \text{Data Snooping} \rightarrow \text{Repeated OOS Selection}.$$
+   - 04 : <b>por qué un Sharpe observado necesita compararse contra lo que era razonable encontrar por azar dado cuántas oportunidades de búsqueda tuviste. </b>: 
+
+       -  Hasta ahora medíamos: $$SR = \frac{\hat{\mu}}{\hat{\sigma}}$$
+
+       - Pero para research serio necesitas otra pregunta:
+
+         -  **¿qué tan extraordinario es este Sharpe dado todo lo que intenté antes de encontrarlo?**
+
+
+       - No pretende responder solamente:  "¿El Sharpe es positivo?"
+
+      - Sino algo mucho más útil:
+      
+      - ¿Es suficientemente alto considerando ruido, no-normalidad y selección entre múltiples estrategias?"
+
+      - Eso conecta directamente con  Quant Desk porque eventualmente el Research Gate debería recibir:
+      
+        - $$\text{performance} + \text{uncertainty} + \text{search history} + \text{distributional quality.}$$
  
 
+ 
