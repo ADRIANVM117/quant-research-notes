@@ -160,6 +160,15 @@
       - Eso conecta directamente con  Quant Desk porque eventualmente el Research Gate debería recibir:
       
         - $$\text{performance} + \text{uncertainty} + \text{search history} + \text{distributional quality.}$$
+
+   - 05 : <b> Research + mercados | ¿Podemos confiar en las conclusiones de un paper? </b>
+     - Modalidad: Lectura crítica y razonamiento a mano.
+     - La secuencia de esta semana ahora queda:
+       - $$ \underbrace{\text{Alpha Estimation}}_{\text{Lunes}} \rightarrow \underbrace{\text{Portfolio Beliefs}}_{\text{Martes}} \rightarrow \underbrace{\text{Optimal Execution}}_{\text{Miércoles}} \rightarrow \underbrace{\text{Capacity}}_{\text{Jueves}} \rightarrow \underbrace{\text{Execution Model}}_{\text{Viernes}} $$
+      
+      - La distinción de hoy:
+        - $$\text{\fbox{Expected Net Alpha = Expected Gross Alpha – Expected Costs}}$$
+ 
  
 
  
