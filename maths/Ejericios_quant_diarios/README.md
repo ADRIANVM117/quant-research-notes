@@ -161,6 +161,12 @@
       
         - $$\text{performance} + \text{uncertainty} + \text{search history} + \text{distributional quality.}$$
 
+---
+<b> semana 07 </b>
+> No basta con validar el modelo que genera alpha; también debemos validar los modelos que determinan cuánto cuesta convertirlo en P&L.
+>
+> Research → Portfolio → Risk → Execution → GO / NO-GO.
+
    - 05 : <b> Research + mercados | ¿Podemos confiar en las conclusiones de un paper? </b>
      - Modalidad: Lectura crítica y razonamiento a mano.
      - La secuencia de esta semana ahora queda:
