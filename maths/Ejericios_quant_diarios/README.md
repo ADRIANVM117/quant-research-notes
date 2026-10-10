@@ -174,6 +174,17 @@
       
       - La distinción de hoy:
         - $$\text{\fbox{Expected Net Alpha = Expected Gross Alpha – Expected Costs}}$$
+
+   - 06 : <b>La enseñanza de hoy es que ningún componente del Quant Desk puede justificar por sí solo una decisión de inversión. </b>
+     - <b> Tema:</b>  Research → Portfolio → Risk → Execution → GO / NO-GO 
+
+     - comprobar si puedes tomar una decisión cuantitativa defendible cuando diferentes componentes del Quant Desk ofrecen evidencia contradictoria.
+     
+       - Research puede presentar un alpha positivo, pero Portfolio debe determinar si aporta valor considerando sus exposiciones. Risk debe verificar que no comprometa los límites del desk. Execution debe determinar cuánto rendimiento puede capturarse después de costes. </b>
+         - $$
+\text{Investable Alpha} = \text{Statistically Defensible} + \text{Portfolio Compatible} + \text{Risk Feasible} + \text{Executable}
+$$
+ 
  
  
 
