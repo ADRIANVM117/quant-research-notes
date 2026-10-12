@@ -166,9 +166,25 @@
 > No basta con validar el modelo que genera alpha; también debemos validar los modelos que determinan cuánto cuesta convertirlo en P&L.
 >
 > Research → Portfolio → Risk → Execution → GO / NO-GO.
-   -03 : <b> La formación Quant no basta con encontrar una señal y asignarle capital: también tenemos que entender cuánto de ese alpha sobrevive cuando intentamos ejecutarlo. </b> 
+
+   - 03 : <b> La formación Quant no basta con encontrar una señal y asignarle capital: también tenemos que entender cuánto de ese alpha sobrevive cuando intentamos ejecutarlo. </b> 
      - $$\text{alpha esperado} \rightarrow \text{urgencia} \rightarrow \text{impacto} \rightarrow \text{implementation shortfall}$$
      - La pregunta central: ¿Cuándo conviene ejecutar rápido aunque eso aumente market impact?
+
+     - Hemos construido : $$\text{Research} \rightarrow \text{belief about alpha} \rightarrow \text{Portfolio.}$$
+
+Hoy agregamos una capa crítica:
+
+$$\text{Research} \rightarrow \text{Portfolio} \rightarrow \text{Execution} \rightarrow \text{realized P\&L}$$
+
+Y aparece una distinción que quiero que conserves:
+
+$$\text{alpha capacity} \neq \text{alpha magnitude}.$$
+
+Una señal puede tener un alpha enorme pero ser imposible de monetizar a tamaño suficiente.
+
+Y otra puede tener alpha más pequeño pero ser altamente líquida, barata de ejecutar y escalable.
+
 
 
    - 05 : <b> Research + mercados | ¿Podemos confiar en las conclusiones de un paper? </b>
