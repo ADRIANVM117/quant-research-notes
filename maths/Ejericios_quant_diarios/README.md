@@ -173,13 +173,12 @@
 
      - Hemos construido : $$\text{Research} \rightarrow \text{belief about alpha} \rightarrow \text{Portfolio.}$$
 
-Hoy agregamos una capa crítica:
+ - Hoy agregamos una capa crítica:
 
 $$\text{Research} \rightarrow \text{Portfolio} \rightarrow \text{Execution} \rightarrow \text{realized P\&L}$$
 
-Y aparece una distinción que quiero que conserves:
-
-$$\text{alpha capacity} \neq \text{alpha magnitude}.$$
+Y aparece una distinción:
+   -  $$\text{alpha capacity} \neq \text{alpha magnitude}.$$
 
 Una señal puede tener un alpha enorme pero ser imposible de monetizar a tamaño suficiente.
 
