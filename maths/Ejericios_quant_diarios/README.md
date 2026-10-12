@@ -166,6 +166,7 @@
 > No basta con validar el modelo que genera alpha; también debemos validar los modelos que determinan cuánto cuesta convertirlo en P&L.
 >
 > Research → Portfolio → Risk → Execution → GO / NO-GO.
+   -03 : <b> La formación Quant no basta con encontrar una señal y asignarle capital: también tenemos que entender cuánto de ese alpha sobrevive cuando intentamos ejecutarlo. </b> 
 
    - 05 : <b> Research + mercados | ¿Podemos confiar en las conclusiones de un paper? </b>
      - Modalidad: Lectura crítica y razonamiento a mano.
