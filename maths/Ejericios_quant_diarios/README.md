@@ -167,6 +167,8 @@
 >
 > Research → Portfolio → Risk → Execution → GO / NO-GO.
    -03 : <b> La formación Quant no basta con encontrar una señal y asignarle capital: también tenemos que entender cuánto de ese alpha sobrevive cuando intentamos ejecutarlo. </b> 
+     - $$\text{alpha esperado} \rightarrow \text{urgencia} \rightarrow \text{impacto} \rightarrow \text{implementation shortfall}$$
+
 
    - 05 : <b> Research + mercados | ¿Podemos confiar en las conclusiones de un paper? </b>
      - Modalidad: Lectura crítica y razonamiento a mano.
