@@ -183,7 +183,10 @@ Y aparece una distinción:
 Una señal puede tener un alpha enorme pero ser imposible de monetizar a tamaño suficiente.
 
 Y otra puede tener alpha más pequeño pero ser altamente líquida, barata de ejecutar y escalable.
+   - 04 : <b> Hoy agregaremos un problema que suele quedar oculto cuando analizamos estrategias individualmente:</b> 
 
+     - $$\text{Una estrategia rentable por separado puede dejar de serlo al incorporarla al portfolio.}$$
+ 
 
 
    - 05 : <b> Research + mercados | ¿Podemos confiar en las conclusiones de un paper? </b>
