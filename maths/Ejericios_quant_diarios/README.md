@@ -206,6 +206,36 @@ Y otra puede tener alpha más pequeño pero ser altamente líquida, barata de ej
          - $$
 \text{Investable Alpha} = \text{Statistically Defensible} + \text{Portfolio Compatible} + \text{Risk Feasible} + \text{Executable}
 $$
- 
- 
+
+---
+<b> semana 08 </b>
+> ¿Qué tan confiable es el Sharpe de una estrategia seleccionada entre muchas alternativas? 
+> 
+
+   - 05 : <b> Distinguir una estrategia que presenta evidencia genuina de alpha de una que parece rentable porque fue seleccionada entre numerosos experimentos. < /b>
+      -    Best Backtest $\neq$ Best Trading Strategy
+
+| Ejercicio | Área | Modalidad | Tiempo |
+| :--- | :--- | :--- | :--- |
+| **1** | Lectura de research + estadística | Lectura y cálculos a mano | 20 min |
+| **2** | Probabilidad + simulación Monte Carlo | Python | 20 min |
+| **3** | Research Governance + Quant Desk | Análisis escrito | 20 min |
+| **Total** | | | **60 min** |
+
+
+
+   - La investigación cuantitativa puede fallar incluso cuando el código es correcto, los datos están limpios y las fórmulas están bien implementadas.
+
+El problema aparece cuando el investigador confunde:
+
+\[\text{Seleccionar el mejor resultado observado}\]
+
+con:
+
+\[\text{Encontrar una señal predictiva genuina}\]
+
+Tu flujo de Research Governance debe seguir siendo:
+
+$ Hipótesis congelada \(\rightarrow\) Evaluación OOS \(\rightarrow\) Diagnóstico \(\rightarrow\) Explicaciones alternativas \(\rightarrow\) Ex[j...] $
+
  
