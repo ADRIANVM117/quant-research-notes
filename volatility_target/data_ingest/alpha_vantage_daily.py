@@ -23,8 +23,8 @@ START_DATE = date(2018, 1, 1)
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 ENV_FILE = PROJECT_ROOT / ".env"
 ASSET_CLASS_DIRECTORIES = {
-    "equity": PROJECT_ROOT / "data_daily" / "equity",
-    "etf": PROJECT_ROOT / "data_daily" / "etf",
+    "equity": PROJECT_ROOT / "data" / "parquet" / "equity",
+    "etf": PROJECT_ROOT / "data" / "parquet" / "etf",
 }
 PARQUET_SCHEMA: dict[str, pl.DataType] = {
     "symbol_requested": pl.String,

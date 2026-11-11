@@ -2,5 +2,8 @@
 .venv/
 data/raw/
 data/parquet/
+data/gold/
+data/quality/
+data/.tmp/
 __pycache__/
 *.py[cod]

@@ -41,7 +41,7 @@ def load_symbols(universe_path: Path, asset_class: str) -> list[str]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Actualiza daily adjusted y conserva raw por símbolo.")
     parser.add_argument("--target-date", required=True, type=date.fromisoformat)
-    parser.add_argument("--destination-root", required=True, type=Path)
+    parser.add_argument("--destination-root", type=Path, default=PROJECT_ROOT / "data")
     parser.add_argument("--universe-path", type=Path, default=UNIVERSE_PATH)
     parser.add_argument("--asset-class", choices=("equity", "etf"), default="equity")
     parser.add_argument("--requests-per-minute", type=int, default=5)

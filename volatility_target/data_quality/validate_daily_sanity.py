@@ -15,9 +15,9 @@ from zoneinfo import ZoneInfo
 import polars as pl
 
 ROOT = Path(__file__).resolve().parents[1]
-SILVER = ROOT / "data_daily"
-GOLD = ROOT / "data_gold" / "daily_series"
-QUALITY = ROOT / "data_quality"
+SILVER = ROOT / "data" / "parquet"
+GOLD = ROOT / "data" / "gold" / "daily_series"
+QUALITY = ROOT / "data" / "quality"
 EXPECTED = {
     "symbol_requested": pl.String, "session_date": pl.Date, "open": pl.Float64,
     "high": pl.Float64, "low": pl.Float64, "close": pl.Float64,
@@ -49,6 +49,8 @@ def atomic_csv(path: Path, columns: list[str], rows: list[dict[str, object]]) ->
 
 def load_manual(path=QUALITY/'manual_quality_decisions.csv'):
     fields=['symbol_requested','asset_class','manual_decision','approved_warning_rule_ids','decision_reason','evidence_file','reviewed_at_utc','reviewer','pending_action']
+    if not path.exists():
+        return {}
     with path.open(encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
     if not rows or list(rows[0])!=fields: raise ValueError('Esquema de decisiones manuales inválido.')
     out={}
@@ -113,7 +115,9 @@ def copy_gold(source: Path, destination: Path, fail=False):
         if tmp.exists(): tmp.unlink()
 
 def run_self_test():
-    with tempfile.TemporaryDirectory() as d:
+    test_root = ROOT / "data" / ".tmp"
+    test_root.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(dir=test_root) as d:
         p=Path(d); now=date.today(); base=pl.DataFrame({"symbol_requested":["X"]*3,"session_date":[date(2024,1,2),date(2024,1,3),date(2024,1,4)],"open":[1.0]*3,"high":[1.0]*3,"low":[1.0]*3,"close":[1.0]*3,"adjusted_close":[1.0]*3,"volume":[0]*3,"dividend_amount":[0.0]*3,"split_coefficient":[1.0]*3,"provider_timezone":["US/Eastern"]*3,"source":["X"]*3,"provider_last_refreshed":["x"]*3,"ingested_at_utc":[datetime.now(timezone.utc)]*3},schema=EXPECTED)
         def rejected(f): return bool(validate_frame(f,now,"t","equity","X",p))
         assert not rejected(base); assert len(identical_warnings(base,"t","equity","X",p))==1
@@ -132,12 +136,15 @@ def run_self_test():
         assert gold.read_bytes()==old
 
 def main():
-    parser=argparse.ArgumentParser(description="Data Sanity v1 de Parquet diarios Silver."); parser.add_argument("--self-test",action="store_true"); args=parser.parse_args()
+    parser=argparse.ArgumentParser(description="Data Sanity v1 de Parquet diarios Silver."); parser.add_argument("--self-test",action="store_true"); parser.add_argument("--asset-class",choices=("equity","etf")); parser.add_argument("--symbol"); args=parser.parse_args()
     if args.self_test: run_self_test(); print("OFFLINE_TESTS=PASS"); return
+    if args.symbol and not args.asset_class: parser.error("--symbol requiere --asset-class")
     now=datetime.now(timezone.utc).isoformat(); today=datetime.now(ZoneInfo("America/Mexico_City")).date(); decisions=load_manual(); audited=[]; frames={}; issues=[]
-    for asset in ("equity","etf"):
+    asset_classes=(args.asset_class,) if args.asset_class else ("equity","etf")
+    for asset in asset_classes:
         for silver in sorted((SILVER/asset).glob("*.parquet")):
             symbol=silver.stem
+            if args.symbol and symbol != args.symbol.strip().upper(): continue
             try: frame=pl.read_parquet(silver); rejects=validate_frame(frame,today,now,asset,symbol,silver)
             except Exception as exc: frame=None; rejects=[issue(now,asset,symbol,silver,"REJECTION","R1","Esquema válido",details=f"lectura: {exc}")]
             frames[(asset,symbol)]=frame; audited.append((asset,symbol,silver,frame,rejects))
