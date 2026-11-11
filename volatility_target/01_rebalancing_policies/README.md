@@ -1,14 +1,9 @@
-Sí, Adrián. Estamos en el punto adecuado para comenzar a utilizar código y datos reales. De hecho, creo que continuar exclusivamente con ejemplos hipotéticos ya tendría un rendimiento educativo decreciente.
-
-Hemos construido suficiente base para plantear una investigación concreta.
 
 ## Sesión 03 — Del modelo a una política operativa
 
 La pregunta que investigaremos será:
 
 > ¿Puede una política de rebalanceo con bandas de tolerancia reducir los costos de implementación del volatility targeting sin deteriorar significativamente el control del riesgo?
-
-Me interesa especialmente porque conecta directamente con tu futuro Portfolio & Risk Engine.
 
 ### ¿Qué vamos a comparar?
 
@@ -75,6 +70,4 @@ Mi propuesta inicial:
 Esta convención evita utilizar el cierre de \\(t\\) para operar retroactivamente a ese mismo precio.
 
 También introduce el riesgo real de movimientos entre el cierre y la apertura.
-
-¿Te parece bien adoptar ejecución en la apertura de \\(t+1\\)?
 
