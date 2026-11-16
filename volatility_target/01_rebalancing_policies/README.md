@@ -2,7 +2,17 @@
 
 *Investigación cuantitativa reproducible sobre estimación de volatilidad, rebalanceo sistemático y evaluación económica con datos históricos de SPY (2018–2026).*
 
+## Notebooks y publicaciones
+
+| Notebook | Google Colab | Publicación |
+|---|---|---|
+| [01 — Pronóstico EWMA](01_volatility_targeting.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/01_volatility_targeting.ipynb) | [Artículo 01](https://adrianvm117.github.io/en/research/notes/01_ewma_volatility_risk.html) |
+| [02 — Políticas de rebalanceo](02_rebalancing_policies.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/02_rebalancing_policies.ipynb) | [Artículo 02](https://adrianvm117.github.io/en/research/notes/02_rebalancing_policies.html) |
+| [03 — Evaluación económica y estadística](03_economic_statistic_evaluation.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/03_economic_statistic_evaluation.ipynb) | **Próximamente** |
+
+
 > ¿Pueden las bandas de tolerancia reducir los costos de implementar una estrategia de volatilidad objetivo sin deteriorar significativamente el control del riesgo?
+
 
 La investigación fija EWMA con λ = 0.94, volatilidad objetivo anualizada de 12% y exposición máxima de 1×. La señal se calcula al cierre y la posible orden se ejecuta en la apertura de la siguiente sesión.
 
@@ -32,13 +42,6 @@ Las cinco curvas usan el mismo calendario y una base de capital inicial común. 
 
 Como referencia contextual, Buy & Hold SPY registró CAGR de 12.58%, volatilidad realizada de 18.11% y drawdown máximo de −32.57%. No es una comparación equivalente con las políticas dinámicas: mantiene una exposición estructuralmente distinta.
 
-## Notebooks y publicaciones
-
-| Notebook | Google Colab | Publicación |
-|---|---|---|
-| [01 — Pronóstico EWMA](01_volatility_targeting.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/01_volatility_targeting.ipynb) | [Artículo 01](https://adrianvm117.github.io/en/research/notes/01_ewma_volatility_risk.html) |
-| [02 — Políticas de rebalanceo](02_rebalancing_policies.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/02_rebalancing_policies.ipynb) | [Artículo 02](https://adrianvm117.github.io/en/research/notes/02_rebalancing_policies.html) |
-| [03 — Evaluación económica y estadística](03_economic_statistic_evaluation.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/03_economic_statistic_evaluation.ipynb) | **Próximamente** |
 
 ## Reproducibilidad
 
