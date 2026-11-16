@@ -1,0 +1,92 @@
+{
+  "manifest_version": 1,
+  "artifact_type": "volatility_target_policy_histories",
+  "period": {
+    "first_date": "2018-02-01",
+    "last_date": "2026-11-10",
+    "sessions": 2206
+  },
+  "initial_capital": {
+    "mxn": 200000.0,
+    "initial_mxn_per_usd": 18.36,
+    "gross_usd": 10893.246187363835,
+    "fx_commission_usd": 2.0,
+    "net_usd": 10891.246187363835
+  },
+  "strategy_parameters": {
+    "ewma_lambda": 0.94,
+    "warmup_returns": 20,
+    "trading_days": 252,
+    "target_volatility_annualized": 0.12,
+    "max_exposure": 1.0,
+    "bands": {
+      "P0 — Daily": null,
+      "P1 — Banda 5 pp": 0.05,
+      "P2 — Banda 10 pp": 0.1
+    }
+  },
+  "economic_conventions": {
+    "decision_and_execution": "Señal al cierre de t; orden preparada al cierre y ejecutada en la apertura de t+1.",
+    "buy_execution": "Orden limit-on-open con límite signal_close × (1 + forecast_vol_annualized / sqrt(252)).",
+    "sell_execution": "Venta en apertura con slippage adverso.",
+    "slippage_bps": 1.0,
+    "stock_commission_per_share_usd": 0.005,
+    "stock_minimum_commission_usd": 1.0,
+    "stock_maximum_commission_rate": 0.01,
+    "iva_on_commission": 0.0,
+    "fx_commission_bps": 0.2,
+    "fx_minimum_commission_usd": 2.0,
+    "dividend_withholding": 0.1,
+    "cash_interest": "DFF disponible con un día de rezago; efectivo elegible sobre USD 10,000, spread de 0.5% y base de 360 días.",
+    "cash_threshold_usd": 10000.0,
+    "cash_full_nav_usd": 100000.0,
+    "cash_spread": 0.005
+  },
+  "data_sources": {
+    "spy": {
+      "repository_path": "volatility_target/series/SPY.parquet",
+      "download_url": "https://raw.githubusercontent.com/ADRIANVM117/quant-research-notes/main/volatility_target/series/SPY.parquet",
+      "sha256": "567c7f241a39e2ee2cc7fc8872404350a331ac1c41f4c2bd70fcbdb36f0ac967"
+    },
+    "usdmxn": {
+      "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXMXUS",
+      "series_id": "DEXMXUS"
+    },
+    "effective_federal_funds_rate": {
+      "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFF",
+      "series_id": "DFF"
+    },
+    "dividend_calendar": {
+      "source_url": "https://raw.githubusercontent.com/ADRIANVM117/quant-research-notes/280837ae0bf56571d732b745906e837cbc58f5cc/volatility_target/01_rebalancing_policies/spy_dividend_calendar.csv"
+    }
+  },
+  "policies": {
+    "P0 — Daily": {
+      "file": "policy_p0.parquet",
+      "sessions": 2206,
+      "first_date": "2018-02-01",
+      "last_date": "2026-11-10",
+      "initial_portfolio_value_usd": 10889.1667059418,
+      "final_portfolio_value": 20946.398124753934,
+      "sha256": "13d3ee5b850aa1b83c2bc1ac4dbb6f634db282b6111dd612be2b6d5b4cb6e34e"
+    },
+    "P1 — Banda 5 pp": {
+      "file": "policy_p1.parquet",
+      "sessions": 2206,
+      "first_date": "2018-02-01",
+      "last_date": "2026-11-10",
+      "initial_portfolio_value_usd": 10889.1667059418,
+      "final_portfolio_value": 22024.794436598226,
+      "sha256": "f1bade576ef0758572fcbde10c5167b143dc9955d1413382dc4509e3e50a5a91"
+    },
+    "P2 — Banda 10 pp": {
+      "file": "policy_p2.parquet",
+      "sessions": 2206,
+      "first_date": "2018-02-01",
+      "last_date": "2026-11-10",
+      "initial_portfolio_value_usd": 10889.1667059418,
+      "final_portfolio_value": 21982.64015029923,
+      "sha256": "5b83354b2760ca13ea6e8a5d342064a3cd9c49f4cb58342a1e1a10ba9711cf8b"
+    }
+  }
+}
