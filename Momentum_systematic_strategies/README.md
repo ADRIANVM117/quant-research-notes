@@ -45,7 +45,7 @@ Para validar una serie Silver existente y promoverla a Gold sin descargar:
 python data_quality/validate_daily_sanity.py --asset-class etf --symbol QQQ
 ```
 
-El universo TSMOM sólo tiene SPY disponible actualmente en Gold. `QQQ`, `XLE` y `GLD` existen en Silver pero aún no en Gold: ejecutar el comando de validación anterior, sustituyendo el símbolo, es el paso reproducible requerido para producir sus copias Gold. Si una serie Silver deja de estar disponible o necesita actualizarse, usar primero `run_daily_pipeline.py` y luego la validación.
+El universo TSMOM tiene `SPY`, `QQQ`, `XLE` y `GLD` disponibles en Gold, validados hasta `2026-11-17`. Si una serie Silver deja de estar disponible o necesita actualizarse, usar primero `run_daily_pipeline.py` y luego la validación.
 
 El pipeline intradía permanece fuera de alcance: `01_tsmom` usa exclusivamente datos diarios.
 
