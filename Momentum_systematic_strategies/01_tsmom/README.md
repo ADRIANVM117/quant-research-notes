@@ -15,11 +15,11 @@ Laboratorio inicial para investigar momentum de series temporales con datos diar
 | Símbolo | Estado Gold | Acción reproducible si falta |
 | --- | --- | --- |
 | `SPY` | Disponible: `data/gold/daily_series/etf/SPY.parquet` | Ninguna. |
-| `QQQ` | Falta Gold; existe Silver. | `python data_quality/validate_daily_sanity.py --asset-class etf --symbol QQQ` |
-| `XLE` | Falta Gold; existe Silver. | `python data_quality/validate_daily_sanity.py --asset-class etf --symbol XLE` |
-| `GLD` | Falta Gold; existe Silver. | `python data_quality/validate_daily_sanity.py --asset-class etf --symbol GLD` |
+| `QQQ` | Disponible: `data/gold/daily_series/etf/QQQ.parquet` | Ninguna. |
+| `XLE` | Disponible: `data/gold/daily_series/etf/XLE.parquet` | Ninguna. |
+| `GLD` | Disponible: `data/gold/daily_series/etf/GLD.parquet` | Ninguna. |
 
-La promoción sólo debe consumirse si el control de calidad la aprueba. Si fuera necesaria una actualización antes de validar, ejecutar `data_ingest/run_daily_pipeline.py` desde la raíz del proyecto con `--asset-class etf` y la última sesión estadounidense completada.
+Los cuatro instrumentos superaron la promoción Gold el `2026-11-17`. Si fuera necesaria una actualización antes de validar, ejecutar `data_ingest/run_daily_pipeline.py` desde la raíz del proyecto con `--asset-class etf` y la última sesión estadounidense completada.
 
 El pipeline intradía no forma parte de este laboratorio.
 
