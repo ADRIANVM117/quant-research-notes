@@ -6,8 +6,8 @@
 
 | Notebook | Google Colab | Publicación |
 |---|---|---|
-| [01 — Pronóstico EWMA](01_volatility_targeting.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/01_volatility_targeting.ipynb) | [Artículo 01](https://adrianvm117.github.io/en/research/notes/01_ewma_volatility_risk.html) |
-| [02 — Políticas de rebalanceo](02_rebalancing_policies.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/02_rebalancing_policies.ipynb) | [Artículo 02](https://adrianvm117.github.io/en/research/notes/02_rebalancing_policies.html) |
+| [01 — Pronóstico EWMA](01_volatility_targeting.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/01_volatility_targeting.ipynb) | [Artículo 01](https://adrianvm117.github.io/es/research/notes/01_ewma_volatility_risk.html) |
+| [02 — Políticas de rebalanceo](02_rebalancing_policies.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/02_rebalancing_policies.ipynb) | [Artículo 02](https://adrianvm117.github.io/es/research/notes/02_rebalancing_policies.html) |
 | [03 — Costos, crecimiento y riesgo en políticas de volatilidad objetivo](03_economic_statistic_evaluation.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/03_economic_statistic_evaluation.ipynb) | [Articulo 03](https://adrianvm117.github.io/es/research/notes/03_economic_evaluation.html) |
 | [04 — Incertidumbre estadística](03_economic_statistic_evaluation.ipynb) | [Abrir en Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/main/volatility_target/01_rebalancing_policies/03_economic_statistic_evaluation.ipynb) | [Articulo 04](https://adrianvm117.github.io/es/research/notes/04_statistical_uncertainty.html) |
 
