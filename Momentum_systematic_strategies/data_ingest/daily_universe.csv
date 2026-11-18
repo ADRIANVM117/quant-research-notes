@@ -1,0 +1,203 @@
+ticker_reto_raw,emisora_reto,serie_reto,asset_class,ticker_alpha_vantage,mapping_type,identity_status,download_decision,decision_reason,source_file,notes
+AA1 *,AA1,*,equity,AA,US_ALIAS,CONFIRMED,INCLUDE,Alcoa Corporation confirmada por nombre del simulador,docs/equities_table_raw.txt,
+AAL *,AAL,*,equity,AAL,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+AAPL *,AAPL,*,equity,AAPL,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+ABBV *,ABBV,*,equity,ABBV,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+ABNB *,ABNB,*,equity,ABNB,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+AC *,AC,*,equity,,NO_SAFE_MAPPING,SYMBOL_COLLISION,REVIEW,El ticker identico en Alpha Vantage representa otro emisor,docs/equities_table_raw.txt,
+ACTINVR B,ACTINVR,B,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+AFRM *,AFRM,*,equity,AFRM,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+AGNC *,AGNC,*,equity,AGNC,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+ALFA A,ALFA,A,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+ALPEK A,ALPEK,A,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+ALSEA *,ALSEA,*,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+AMAT *,AMAT,*,equity,AMAT,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+AMD *,AMD,*,equity,AMD,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+AMX B,AMX,B,equity,AMX,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+AMZN *,AMZN,*,equity,AMZN,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+ASUR B,ASUR,B,equity,ASR,ADR_PROXY,ADR_PROXY_CANDIDATE,INCLUDE,ADR estadounidense del mismo emisor; no es la serie local exacta,docs/equities_table_raw.txt,
+AVGO *,AVGO,*,equity,AVGO,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+AXP *,AXP,*,equity,AXP,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+BA *,BA,*,equity,BA,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+BABA N,BABA,N,equity,BABA,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+BAC *,BAC,*,equity,BAC,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+BBAJIO O,BBAJIO,O,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+BIMBO A,BIMBO,A,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+BMY *,BMY,*,equity,BMY,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+BOLSA A,BOLSA,A,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+BRKB *,BRKB,*,equity,,NOT_APPLICABLE,EXCLUDED_IDENTITY_OR_CORPORATE_ACTION,EXCLUDE,"Exclusion explicita documentada por identidad, accion corporativa, formato ambiguo o bajo valor marginal.",docs/equities_table_raw.txt,
+C *,C,*,equity,C,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+CAT *,CAT,*,equity,CAT,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+CCL1 N,CCL1,N,equity,CCL,US_ALIAS,CONFIRMED,INCLUDE,Carnival Corporation confirmada por nombre del simulador,docs/equities_table_raw.txt,
+CEMEX CPO,CEMEX,CPO,equity,CX,ADR_PROXY,ADR_PROXY_CANDIDATE,INCLUDE,ADR estadounidense del mismo emisor; no es la serie local exacta,docs/equities_table_raw.txt,
+CHDRAUI B,CHDRAUI,B,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+CLF *,CLF,*,equity,CLF,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+COST *,COST,*,equity,COST,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+CPE *,CPE,*,equity,,NOT_APPLICABLE,EXCLUDED_IDENTITY_OR_CORPORATE_ACTION,EXCLUDE,"Exclusion explicita documentada por identidad, accion corporativa, formato ambiguo o bajo valor marginal.",docs/equities_table_raw.txt,
+CRM *,CRM,*,equity,CRM,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+CSCO *,CSCO,*,equity,CSCO,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+CUERVO *,CUERVO,*,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+CVS *,CVS,*,equity,CVS,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+CVX *,CVX,*,equity,CVX,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+DAL *,DAL,*,equity,DAL,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+DIS *,DIS,*,equity,DIS,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+DVN *,DVN,*,equity,DVN,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+ELEKTRA *,ELEKTRA,*,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+ETSY *,ETSY,*,equity,ETSY,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+F *,F,*,equity,F,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+FANG *,FANG,*,equity,FANG,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+FCX *,FCX,*,equity,FCX,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+FDX *,FDX,*,equity,FDX,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+FEMSA UBD,FEMSA,UBD,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+FIBRAMQ 12,FIBRAMQ,12,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+FIBRAPL 14,FIBRAPL,14,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+FSLR *,FSLR,*,equity,FSLR,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+FUBO *,FUBO,*,equity,FUBO,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+FUNO 11,FUNO,11,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+GAP B,GAP,B,equity,PAC,ADR_PROXY,ADR_PROXY_CANDIDATE,INCLUDE,ADR estadounidense del mismo emisor; no es la serie local exacta,docs/equities_table_raw.txt,
+GCARSO A1,GCARSO,A1,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+GCC *,GCC,*,equity,,NO_SAFE_MAPPING,SYMBOL_COLLISION,REVIEW,El ticker identico en Alpha Vantage representa otro emisor,docs/equities_table_raw.txt,
+GE *,GE,*,equity,GE,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+GENTERA *,GENTERA,*,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+GFINBUR O,GFINBUR,O,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+GFNORTE O,GFNORTE,O,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+GM *,GM,*,equity,GM,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+GME *,GME,*,equity,GME,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+GMEXICO B,GMEXICO,B,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+GOLD N,GOLD,N,equity,B,TICKER_CHANGE,CONFIRMED,INCLUDE,Barrick cambio su ticker estadounidense de GOLD a B,docs/equities_table_raw.txt,
+GOOGL *,GOOGL,*,equity,GOOGL,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+GRUMA B,GRUMA,B,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+HD *,HD,*,equity,HD,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+INTC *,INTC,*,equity,INTC,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+JNJ *,JNJ,*,equity,JNJ,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+JPM *,JPM,*,equity,JPM,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+KIMBER A,KIMBER,A,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+KO *,KO,*,equity,KO,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+KOF UBL,KOF,UBL,equity,KOF,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+LAB B,LAB,B,equity,,NO_SAFE_MAPPING,SYMBOL_COLLISION,REVIEW,El ticker identico en Alpha Vantage representa otro emisor,docs/equities_table_raw.txt,
+LASITE B-1,LASITE,B-1,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+LCID *,LCID,*,equity,LCID,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+LIVEPOL C-1,LIVEPOL,C-1,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+LLY *,LLY,*,equity,LLY,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+LUV *,LUV,*,equity,LUV,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+LVS *,LVS,*,equity,LVS,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+MA *,MA,*,equity,MA,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+MARA *,MARA,*,equity,MARA,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+MCD *,MCD,*,equity,MCD,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+MEGA CPO,MEGA,CPO,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+MELI N,MELI,N,equity,MELI,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+META *,META,*,equity,META,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+MFRISCO A-1,MFRISCO,A-1,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+MRK *,MRK,*,equity,MRK,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+MRNA *,MRNA,*,equity,MRNA,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+MRO *,MRO,*,equity,,NOT_APPLICABLE,EXCLUDED_IDENTITY_OR_CORPORATE_ACTION,EXCLUDE,"Exclusion explicita documentada por identidad, accion corporativa, formato ambiguo o bajo valor marginal.",docs/equities_table_raw.txt,
+MSFT *,MSFT,*,equity,MSFT,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+MU *,MU,*,equity,MU,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+NCLH N,NCLH,N,equity,NCLH,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+NFLX *,NFLX,*,equity,NFLX,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+NKE *,NKE,*,equity,NKE,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+NU N,NU,N,equity,NU,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+NVAX *,NVAX,*,equity,NVAX,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+NVDA *,NVDA,*,equity,NVDA,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+OMA B,OMA,B,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+ORBIA *,ORBIA,*,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+ORCL *,ORCL,*,equity,ORCL,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+OXY1 *,OXY1,*,equity,OXY,US_ALIAS,CONFIRMED,INCLUDE,Occidental Petroleum Corporation confirmada por nombre del simulador,docs/equities_table_raw.txt,
+PARA *,PARA,*,equity,,NOT_APPLICABLE,EXCLUDED_IDENTITY_OR_CORPORATE_ACTION,EXCLUDE,"Exclusion explicita documentada por identidad, accion corporativa, formato ambiguo o bajo valor marginal.",docs/equities_table_raw.txt,
+PE&OLES *,PE&OLES,*,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+PEP *,PEP,*,equity,PEP,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+PFE *,PFE,*,equity,PFE,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+PG *,PG,*,equity,PG,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+PINFRA *,PINFRA,*,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+PINS *,PINS,*,equity,PINS,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+PLTR *,PLTR,*,equity,PLTR,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+PYPL *,PYPL,*,equity,PYPL,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+Q *,Q,*,equity,,NO_SAFE_MAPPING,SYMBOL_COLLISION,REVIEW,El ticker identico en Alpha Vantage representa otro emisor,docs/equities_table_raw.txt,
+QCOM *,QCOM,*,equity,QCOM,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+R A,R,A,equity,R,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+RCL *,RCL,*,equity,RCL,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+RIOT *,RIOT,*,equity,RIOT,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+RIVN *,RIVN,*,equity,RIVN,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+SBUX *,SBUX,*,equity,SBUX,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+SHOP N,SHOP,N,equity,SHOP,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+SITES1 A-1,SITES1,A-1,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+SOFI *,SOFI,*,equity,SOFI,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+SPCE *,SPCE,*,equity,SPCE,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+T *,T,*,equity,T,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+TERRA 13,TERRA,13,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+TGT *,TGT,*,equity,TGT,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+TLEVISA CPO,TLEVISA,CPO,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+TMO *,TMO,*,equity,TMO,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+TSLA *,TSLA,*,equity,TSLA,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+TSM N,TSM,N,equity,TSM,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+TX *,TX,*,equity,TX,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+UAL *,UAL,*,equity,UAL,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+UBER *,UBER,*,equity,UBER,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+UNH *,UNH,*,equity,UNH,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+UPST *,UPST,*,equity,UPST,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+V *,V,*,equity,V,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+VESTA *,VESTA,*,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+VOLAR A,VOLAR,A,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+VZ *,VZ,*,equity,VZ,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+WALMEX *,WALMEX,*,equity,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,No existe candidato exacto US en alphavantage_equity_coverage.csv.,docs/equities_table_raw.txt,
+WFC *,WFC,*,equity,WFC,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+WMT *,WMT,*,equity,WMT,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+XOM *,XOM,*,equity,XOM,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+XYZ *,XYZ,*,equity,XYZ,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+ZM *,ZM,*,equity,ZM,SAME_SYMBOL,CANDIDATE,INCLUDE,Alpha Vantage devolvio candidato exacto US; identidad economica pendiente de validacion.,docs/equities_table_raw.txt,
+AAXJ,,,etf,AAXJ,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+ACWI,,,etf,ACWI,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+ANGELD,,,etf,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,Estado INCONCLUSIVE_RATE_LIMIT; requiere repetir ANGELD frente a ANGELD10 sin rate limit.,docs/etfs_simbol.txt,No se demostro equivalencia estadounidense.
+BIL,,,etf,BIL,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+BOTZ,,,etf,BOTZ,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+DIA,,,etf,DIA,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+DIABLOI,,,etf,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,Cobertura mexicana pendiente de validacion.,docs/etfs_simbol.txt,"No se convierte automaticamente a un ticker estadounidense, SIC o BMV."
+EEM,,,etf,EEM,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+EWZ,,,etf,EWZ,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+FAS,,,etf,FAS,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+FAZ,,,etf,FAZ,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+GDX,,,etf,GDX,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+GLD,,,etf,GLD,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+IAU,,,etf,IAU,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+ICLN,,,etf,ICLN,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+INDA,,,etf,INDA,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+IVV,,,etf,IVV,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+KWEB,,,etf,KWEB,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+LIT,,,etf,LIT,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+MCHI,,,etf,MCHI,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+NAFTRAC,,,etf,,NO_SAFE_MAPPING,LOCAL_ONLY_PENDING,REVIEW,Cobertura mexicana pendiente de validacion.,docs/etfs_simbol.txt,"No se convierte automaticamente a un ticker estadounidense, SIC o BMV."
+PSQ,,,etf,PSQ,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+QCLN,,,etf,QCLN,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+QLD,,,etf,QLD,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+QQQ,,,etf,QQQ,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SHV,,,etf,SHV,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SHY,,,etf,SHY,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SLV,,,etf,SLV,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SOXL,,,etf,SOXL,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SOXS,,,etf,SOXS,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SOXX,,,etf,SOXX,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SPLG,,,etf,SPYM,TICKER_CHANGE,CANDIDATE,REVIEW,Cambio de ticker US SPLG -> SPYM documentado; el uso de SPYM para el Reto requiere validacion operativa.,docs/etfs_simbol.txt,Cambio oficial efectivo 2025-10-31; ticker_reto_raw se conserva como SPLG.
+SPXL,,,etf,SPXL,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SPXS,,,etf,SPXS,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SPY,,,etf,SPY,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+SQQQ,,,etf,SQQQ,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+TAN,,,etf,TAN,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+TECL,,,etf,TECL,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+TECS,,,etf,TECS,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+TLT,,,etf,TLT,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+TNA,,,etf,TNA,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+TQQQ,,,etf,TQQQ,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+TZA,,,etf,TZA,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+USO,,,etf,USO,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+VEA,,,etf,VEA,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+VGT,,,etf,VGT,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+VNQ,,,etf,VNQ,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+VOO,,,etf,VOO,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+VT,,,etf,VT,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+VTI,,,etf,VTI,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+VWO,,,etf,VWO,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+VYM,,,etf,VYM,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+XLE,,,etf,XLE,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+XLF,,,etf,XLF,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+XLK,,,etf,XLK,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.
+XLV,,,etf,XLV,SAME_SYMBOL,CONFIRMED,INCLUDE,Listado estadounidense directo identificado en la evidencia metodologica.,docs/etfs_simbol.txt,Sin mapping especial documentado.

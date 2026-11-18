@@ -1,0 +1,10 @@
+.env
+.venv/
+data/raw/
+data/parquet/
+data/gold/
+data/quality/
+data/.tmp/
+series/
+__pycache__/
+*.py[cod]
