@@ -2,40 +2,67 @@
 
 ## Hipótesis económica
 
-La hipótesis es que, para XLE, el momentum de la componente atribuida a mercado, size y growth/value puede distinguir periodos de exposición más favorables que el momentum total del propio ETF. Es una hipótesis exploratoria: XLE fue seleccionado después de observar resultados históricos.
+Esta candidata investiga si el momentum de la componente sistemática atribuida por un modelo factorial permite identificar periodos históricos de exposición long/cash en XLE. XLE fue seleccionada retrospectivamente después de analizar varios activos; los resultados descritos aquí son exploratorios y no constituyen validación prospectiva independiente.
 
-## Señal congelada
+## Especificación congelada
 
-- Activo: XLE.
-- Formación: 126 sesiones.
-- Atribución: OLS rolling de 252 sesiones con intercepto.
-- Proxies: `MKT = SPY`, `SIZE = IWM - SPY`, `GV = IWF - IWD`.
-- Decisión: long si el momentum sistemático acumulado es positivo; cash en caso contrario.
-- Sin apalancamiento, cortos ni cambios de umbral.
-- La señal se conoce al cierre de `t`; la orden se prepara entonces para una simulación de fill en la apertura de `t+1`.
+- **Activo:** XLE.
+- **Factores:** $MKT = SPY$, $SIZE = IWM - SPY$ y $GV = IWF - IWD$.
+- **Atribución:** rolling OLS de 252 sesiones con intercepto.
+- **Momentum:** acumulación de 126 sesiones de retornos sistemáticos atribuidos.
+- **Posición:** long cuando ese momentum acumulado es positivo; cash en caso contrario.
+- **Restricciones:** sin posiciones cortas ni apalancamiento.
+- **Cronología:** la señal se conoce al cierre de $t$ y el fill se simula en la apertura de $t+1$.
 
-La candidata se compara con Buy & Hold, TSMOM total de 126 sesiones y Market Momentum de SPY de 126 sesiones.
+El retorno sistemático atribuido incluye el intercepto rolling y no sólo las contribuciones de los ETFs factoriales. La candidata se compara con Buy & Hold, TSMOM total de 126 sesiones y Market Momentum de SPY de 126 sesiones, sin cambiar umbrales ni horizontes para mejorar los resultados.
 
-## Resultados históricos exploratorios
+## Ejecución y contabilidad modeladas
 
-La notebook de señal encontró, en la ventana investigada, un mejor perfil histórico para XLE Systematic Momentum que para TSMOM total. Ese resultado motivó esta evaluación operativa; no constituye una validación independiente ni alpha confirmado.
+La simulación comienza con USD 10,000, usa acciones enteras y exige efectivo no negativo durante 1,853 sesiones de ejecución. Las órdenes se preparan con información disponible tras el cierre y se ejecutan de forma simulada en la apertura siguiente.
 
-## Ejecución y fricciones
+El escenario central aplica **IBKR Pro Fixed modelado** —USD 0.005 por acción, mínimo USD 1 por orden y máximo 1% del valor negociado— junto con 5 bps de slippage adverso por fill. Los dividendos de Gold se acreditan como efectivo y los splits ajustan el número de acciones según el campo registrado en Gold.
 
-`notebooks/01_execution_feasibility.ipynb` reconstruye las señales y verifica su coincidencia con la notebook de origen en fechas comunes. Simula capital inicial de USD 10,000, acciones enteras, cash no negativo y fills en la apertura siguiente.
+Los precios ajustados se emplean para construir la señal; los fills usan OHLC. No se modelan bid/ask, profundidad, prioridad de cola, impacto de mercado, fills reales, tarifas regulatorias ni costes observados de IBKR. El efecto económico de `adjusted_close` y los dividendos acreditados como efectivo siguen convenciones distintas y no deben tratarse como equivalentes.
 
-La comisión documentada usa el esquema **IBKR Pro Fixed** para acciones/ETFs estadounidenses: USD 0.005 por acción, mínimo USD 1 por orden y máximo 1% del valor negociado. Fuente consultada el 2026-11-19: [Interactive Brokers — Commissions Stocks](https://www.interactivebrokers.com/en/pricing/commissions-stocks.php). No se modelan comisiones regulatorias adicionales, exchange fees, impuestos ni spreads observados.
+## Resultados económicos históricos
 
-El escenario con slippage añade 5 bps adversos por fill como supuesto ilustrativo; no es un spread histórico ni una tarifa de IBKR.
+Escenario: **IBKR Pro Fixed modelado + 5 bps de slippage adverso**.
+
+| Métrica | Systematic | Buy & Hold |
+| --- | ---: | ---: |
+| Capital final | USD 28,028.02 | USD 23,494.51 |
+| CAGR | 15.046% | 12.318% |
+| Max drawdown | −27.805% | −57.981% |
+
+Systematic realizó 63 operaciones históricas. Su Sharpe simulado fue 0.618. Estas cifras no sustituyen un PnL real de IBKR ni establecen alpha confirmado.
+
+## Sensibilidad económica
+
+| Slippage | CAGR de Systematic |
+| --- | ---: |
+| 0 bps | 15.536% |
+| 5 bps | 15.046% |
+| 10 bps | 14.583% |
+| 20 bps | 13.590% |
+
+Retrasar una sesión la ejecución redujo el CAGR a 13.195%, frente al 15.046% programado. La comparación usa 1,852 sesiones en el caso retrasado y 1,853 en el programado, por lo que es una sensibilidad de calendario y no un experimento perfectamente equivalente.
+
+El bootstrap por bloques utiliza retornos idealizados sin costes de la notebook de señales. Describe la sensibilidad histórica de esa serie, pero no corrige la selección retrospectiva de XLE ni convierte probabilidades de réplicas positivas en probabilidades prospectivas de generar alpha.
+
+## Notebooks y reproducción
+
+La candidata forma parte de [02 — Factor Momentum](../../README.md).
+
+- [01 — Viabilidad de ejecución](notebooks/01_execution_feasibility.ipynb) · [Abrir en Google Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/factor-momentum-colab-v1.1/Momentum_systematic_strategies/02_factor_momentum/strategy_candidates/xle_systematic_momentum/notebooks/01_execution_feasibility.ipynb)
+- [02 — Revisión previa a paper trading](notebooks/02_pre_paper_review.ipynb) · [Abrir en Google Colab](https://colab.research.google.com/github/ADRIANVM117/quant-research-notes/blob/factor-momentum-colab-v1.1/Momentum_systematic_strategies/02_factor_momentum/strategy_candidates/xle_systematic_momentum/notebooks/02_pre_paper_review.ipynb)
+
+Ambas notebooks se reprodujeron en Google Colab real mediante **Run all**, sin ejecutar previamente las demás notebooks. Sus bootstraps descargan los insumos públicos fijados y verifican sus hashes antes de ejecutar los cálculos.
 
 ## Limitaciones
 
-- Las señales y los resultados proceden del mismo historial usado para seleccionar XLE.
-- Los OHLC diarios no contienen bid/ask, profundidad, prioridad de cola ni fills reales.
-- Los dividendos de Gold se acreditan como efectivo en la fecha indicada por la serie; eso aproxima el efecto económico, no el calendario real de pago.
-- Los splits se aplican al número de acciones antes de la apertura de su fecha registrada. Cualquier diferencia de convención del proveedor limita la fidelidad contable.
-- La simulación no representa PnL real de IBKR ni una conexión operativa.
-
-## Objetivo futuro
-
-Si la viabilidad persiste después de estas fricciones, la siguiente etapa será observación prospectiva en paper trading con esta especificación congelada y datos que no participaron en la selección de XLE.
+- XLE fue seleccionada retrospectivamente; no existe validación prospectiva independiente.
+- Fills, slippage y comisiones son supuestos modelados, no observaciones de IBKR.
+- Los dividendos acreditados como efectivo y `adjusted_close` no representan la misma convención contable.
+- Las condiciones históricas, incluidas liquidez y costes efectivos, pueden no repetirse.
+- El bootstrap no confirma alpha.
+- No existe PnL real de IBKR ni una estrategia validada para producción.

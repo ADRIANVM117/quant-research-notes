@@ -1,61 +1,21 @@
 # Momentum Systematic Strategies
 
-Proyecto de investigación para diseñar, auditar y evaluar estrategias sistemáticas de momentum. La infraestructura común preserva datos diarios reproducibles; cada línea de investigación vive de forma independiente y consume únicamente series Gold validadas.
+Este proyecto reúne líneas de investigación independientes sobre momentum: desde señales basadas en retornos históricos del propio activo hasta modelos sistemáticos que incorporan proxies factoriales y representaciones dinámicas de sus exposiciones. Cada línea conserva su pregunta, supuestos y límites; la infraestructura de datos diaria es común.
 
-## Arquitectura y flujo de datos
+## Líneas de investigación
 
-```text
-Alpha Vantage -> data_ingest/ -> data/parquet/ (Silver)
-                              -> data_quality/ -> data/gold/daily_series/<asset_class>/ (Gold)
-                                                           -> <research_line>/notebooks/
-```
-
-- **Fuente inicial:** Alpha Vantage (`TIME_SERIES_DAILY_ADJUSTED`).
-- **Frecuencia inicial:** diaria.
-- **Fuente canónica para investigación:** `data/gold/daily_series/<asset_class>/`.
-- **Ruta que usarán los notebooks TSMOM:** `data/gold/daily_series/etf/<SYMBOL>.parquet`.
-
-Las series crudas, Silver, Gold y los reportes de calidad son locales e ignorados por Git. Los notebooks no deben leer `data/raw/`, `data/parquet/` ni `series/`.
-
-## Investigación
-
-| Línea | Estado |
+| Línea | Propósito |
 | --- | --- |
-| `01_tsmom` | Preparada para iniciar el laboratorio base diario. |
-| `02_factor_momentum` | Planeada; no implementada. |
-| `03_regime_aware_momentum` | Planeada; no implementada. |
-| `04_deep_momentum_networks` | Planeada; no implementada. |
-| `05_momentum_transformer` | Planeada; no implementada. |
+| [01 — Time-Series Momentum](01_tsmom/) | Estudia la persistencia de los retornos propios de un activo; es el antecedente de investigación temporal. |
+| [02 — Factor Momentum](02_factor_momentum/README.md) | Examina atribución con proxies factoriales, señales sistemáticas long/cash y la candidata exploratoria XLE. |
+| [03 — Regime-aware Momentum](03_regime_aware_momentum/) | Investiga estabilidad de betas, incertidumbre de atribución y posibles cambios estructurales con OLS rolling, Kalman y diagnósticos online. |
 
-El primer laboratorio está congelado en el universo ETF `SPY`, `QQQ`, `XLE` y `GLD`, y comienza con **Block 01 — Data Audit**. No hay todavía señales, construcción de cartera, backtests, métricas ni resultados de momentum.
+Las líneas Deep Momentum Networks y Momentum Transformer permanecen como posibles direcciones futuras; no existen aún como subcarpetas de investigación en este proyecto.
 
-## Pipeline diario
+## Datos e infraestructura compartida
 
-La ingesta deja la respuesta inmutable en `data/raw/`, normaliza la historia en Silver (`data/parquet/<asset_class>/`) y el control de calidad promueve series aprobadas a Gold.
+El flujo diario común es: Alpha Vantage → [data_ingest/](data_ingest/) → Silver → [data_quality/](data_quality/) → Gold → notebooks de investigación.
 
-Para actualizar una serie diaria y ejecutar su puerta de calidad, usa la fecha de la última sesión estadounidense completada:
+La investigación consume series Gold validadas desde [`data/gold/daily_series/`](data/gold/daily_series/). Los siete ETFs empleados por Factor Momentum ya están versionados en Git; Gold no es, por tanto, una colección íntegramente ignorada por Git. Las capas raw y Silver siguen siendo etapas operativas del pipeline, no fuentes paralelas de análisis.
 
-```powershell
-python data_ingest/run_daily_pipeline.py --symbol SPY --asset-class etf --expected-session-date YYYY-MM-DD
-```
-
-Para validar una serie Silver existente y promoverla a Gold sin descargar:
-
-```powershell
-python data_quality/validate_daily_sanity.py --asset-class etf --symbol QQQ
-```
-
-El universo TSMOM tiene `SPY`, `QQQ`, `XLE` y `GLD` disponibles en Gold, validados hasta `2026-11-17`. Si una serie Silver deja de estar disponible o necesita actualizarse, usar primero `run_daily_pipeline.py` y luego la validación.
-
-El pipeline intradía permanece fuera de alcance: `01_tsmom` usa exclusivamente datos diarios.
-
-## Entorno y deuda técnica
-
-`.venv/` es un entorno heredado y se conserva por ahora; deberá recrearse posteriormente desde `requirements.txt`. En la auditoría inicial, `plotly==6.2.0` estaba declarado pero ausente de ese entorno heredado.
-
-La prueba interna de calidad (`--self-test`) tiene una deuda técnica bajo OneDrive: no puede crear o limpiar temporales en `data/.tmp/`. No bloquea la organización de esta estructura y no se modifica en esta etapa.
-
-## Política para `series/`
-
-`series/SPY.parquet` se conserva localmente y no se elimina de forma destructiva. Fue verificado como una copia byte a byte idéntica de `data/gold/daily_series/etf/SPY.parquet` (SHA-256 `567C7F241A39E2EE2CC7FC8872404350A331AC1C41F4C2BD70FCBDB36F0AC967`). `series/` está ignorado por Git para evitar que se convierta en una fuente paralela; toda investigación debe leer Gold.
-
+El alcance inicial es diario. La infraestructura intradía no forma parte de estas líneas de investigación actuales.
