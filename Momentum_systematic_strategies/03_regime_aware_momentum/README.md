@@ -1,47 +1,60 @@
 # Regime-aware Momentum
 
-Esta línea investiga cómo cambian las exposiciones factoriales a través del tiempo, qué consecuencias tienen esos cambios sobre la atribución de retornos y si los modelos dinámicos representan mejor la incertidumbre que una estimación rolling convencional.
+Esta línea investiga la estabilidad temporal de las exposiciones factoriales, la incertidumbre asociada a su estimación y la identificación de posibles cambios estructurales en los retornos de activos financieros.
 
-El objetivo es estudiar la **no estacionariedad de las relaciones factoriales**, sin asumir de antemano la existencia de regímenes discretos ni que una mejora estadística implique mayor rentabilidad.
+El objetivo es comprender las **limitaciones de los modelos con parámetros históricos o dinámicos** y determinar qué información adicional podría aportar una representación consciente de cambios de régimen.
+
+La investigación parte de [`02_factor_momentum`](../02_factor_momentum/), sin asumir que una variación de las betas implica un régimen discreto ni que una mejora estadística necesariamente produce mayor rentabilidad.
 
 ## Research methodology
 
-La investigación parte del modelo factorial desarrollado en [`02_factor_momentum`](../02_factor_momentum/), utilizando:
-
 - **Activos:** QQQ, XLE y XLF.
-- **Factores:** MKT, SIZE y GV, construidos con proxies ETF.
+- **Factores:** MKT, SIZE y GV, construidos mediante proxies ETF.
 - **Benchmark:** rolling OLS de 252 sesiones.
 - **Modelos dinámicos:** Kalman con incertidumbre fija y adaptativa.
-- **Datos:** series diarias Gold de Alpha Vantage.
-- **Evaluación:** atribución causal con coeficientes disponibles hasta la sesión anterior.
+- **Diagnósticos:** estabilidad de betas, errores de atribución, incertidumbre probabilística y posibles cambios estructurales.
+- **Datos:** series diarias Gold de Alpha Vantage, 2018–2026.
+- **Evaluación:** estimaciones causales con coeficientes disponibles hasta la sesión anterior.
 
-Las estimaciones dinámicas se comparan sobre observaciones comunes, conservando la misma estructura factorial.
+Se utilizan observaciones comunes y especificaciones comparables para distinguir mejoras de atribución, calibración de incertidumbre y capacidad de detección.
 
 ## Research notebooks
 
 | Notebook | Objetivo |
 |---|---|
-| [01 — Factor Stability Diagnostics](notebooks/01_factor_stability_diagnostics.ipynb) | Analizar cambios en betas, varianza sistemática y errores de atribución. |
+| [01 — Factor Stability Diagnostics](notebooks/01_factor_stability_diagnostics.ipynb) | Examinar cambios en betas, varianza sistemática y errores de atribución. |
 | [02 — Dynamic Beta Estimation](notebooks/02_dynamic_beta_estimation.ipynb) | Comparar rolling OLS 252d frente a Kalman con parámetros fijos. |
-| [03 — Adaptive Observation Uncertainty](notebooks/03_adaptive_observation_uncertainty.ipynb) | Evaluar incertidumbre residual dinámica y calibración probabilística. |
-| `04_structural_change_diagnostics.ipynb` *(en desarrollo)* | Investigar posibles cambios estructurales y la respuesta de OLS y Kalman. |
+| [03 — Adaptive Observation Uncertainty](notebooks/03_adaptive_observation_uncertainty.ipynb) | Evaluar incertidumbre adaptativa mediante EWMA y calibración probabilística. |
+| [04 — Structural Change Diagnostics](notebooks/04_structural_change_diagnostics.ipynb) | Identificar episodios de inestabilidad factorial y distinguir alertas persistentes de efectos de solapamiento. |
+| [05 — Online Changepoint Detection](notebooks/05_online_changepoint_detection.ipynb) | Evaluar BOCPD mediante datos históricos y simulaciones con cambios conocidos. |
 
 ## Key findings
 
-**Factor stability.** XLE mostró un deterioro de atribución entre 2019–2022 y 2023–2026: su R² pasó de 0.645 a 0.284. La varianza sistemática disminuyó proporcionalmente más que la varianza del error, mientras que las exposiciones factoriales también presentaron cambios relevantes.
+**Factor stability.** La atribución factorial de XLE se deterioró entre 2019–2022 y 2023–2026 (R² OOS: 0.645 → 0.284). La varianza sistemática disminuyó proporcionalmente más que la varianza del error, mientras que las exposiciones a los factores también mostraron cambios estadísticamente relevantes bajo el análisis exploratorio.
 
-**Dynamic betas.** Kalman con parámetros fijos mejoró modestamente la atribución frente a rolling OLS. En XLE, durante la evaluación 2022–2026, el R² aumentó de 0.3164 a 0.3351, con pequeñas reducciones de MAE y errores extremos.
+**Dynamic beta estimation.** Kalman con parámetros fijos produjo mejoras modestas frente a rolling OLS. En XLE, durante 2022–2026, el R² OOS aumentó de 0.3164 a 0.3351, con pequeñas reducciones de MAE, RMSE y errores extremos. La mayor adaptabilidad no demostró una ventaja suficientemente grande para sustituir automáticamente el benchmark.
 
-**Adaptive uncertainty.** Permitir que la incertidumbre de observación evolucione mediante EWMA no produjo mejoras consistentes en atribución puntual. Sin embargo, mejoró algunas propiedades de calibración probabilística, especialmente durante 2022.
+**Adaptive uncertainty.** Un \(R_t\) dinámico estimado mediante EWMA de innovaciones no mejoró consistentemente la atribución puntual. Sin embargo, redujo la pérdida logarítmica gaussiana y mejoró algunas propiedades de calibración probabilística, particularmente en XLE durante 2022.
 
-Estos resultados motivan investigar si existen cambios persistentes o abruptos en las relaciones factoriales que los estimadores actuales representan con retraso.
+**Structural instability.** Los diagnósticos detectaron episodios de errores asociados persistentemente con MKT. No obstante, el solapamiento de ventanas y la concentración de contribuciones en pocas sesiones limitaron su interpretación como evidencia de rupturas estructurales. Kalman tampoco superó uniformemente a OLS después de las alertas.
+
+**Online changepoint detection.** La especificación BOCPD evaluada no produjo alertas durante 2022–2026. En simulaciones controladas, identificó únicamente 7 de 50 cambios persistentes de media de +2 desviaciones estándar dentro de 63 sesiones. Su sensibilidad resultó insuficiente para interpretar la ausencia de alertas históricas como evidencia de estabilidad.
 
 ## Interpretation and limitations
 
-- Los retornos factoriales contemporáneos se utilizan para atribución, no para pronosticar anticipadamente los retornos del activo.
-- Los cortes temporales y los modelos se han examinado retrospectivamente; los resultados no constituyen validación confirmatoria independiente.
-- Una menor capacidad explicativa no demuestra por sí sola un cambio de régimen ni implica necesariamente una pérdida de utilidad económica de las señales de momentum.
-- Ningún modelo dinámico se considera superior por su complejidad: su contribución debe evaluarse frente al benchmark y en términos de representación del riesgo.
+Los resultados permiten distinguir tres problemas que requieren tratamientos potencialmente diferentes: estimación de exposiciones cambiantes, representación de incertidumbre residual y detección de rupturas estructurales.
+
+- La atribución utiliza factores contemporáneos realizados; no constituye un pronóstico del retorno del activo antes de la sesión.
+- Las comparaciones son causales, pero el historial ya fue explorado y los resultados no representan una validación confirmatoria independiente.
+- Los errores de atribución pueden reflejar betas desactualizadas, factores omitidos o shocks residuales; no identifican por sí solos un mecanismo único.
+- Los diagnósticos de cambios estructurales no proporcionan fechas verificadas de ruptura. La especificación BOCPD actual queda como experimento documentado, no como detector operativo.
+- Todavía no se ha demostrado que incorporar estimadores dinámicos o detección de cambios mejore una política de momentum en términos de rentabilidad o control de riesgo.
+
+## Research outlook
+
+La siguiente etapa estudiará si una política de momentum puede aprovechar información temporal y condiciones de mercado de manera más flexible que las reglas clásicas.
+
+Las **Deep Momentum Networks** constituyen una hipótesis de investigación posterior, no una solución previamente validada. Su contribución deberá evaluarse frente a baselines sistemáticos interpretables, con validación cronológica, control de complejidad y costes de operación.
 
 ## Data
 
@@ -49,4 +62,4 @@ Todas las investigaciones consumen exclusivamente series validadas desde:
 
 `data/gold/daily_series/etf/<SYMBOL>.parquet`
 
-La infraestructura de ingesta y calidad es compartida por `Momentum_systematic_strategies/`. Los notebooks no modifican los archivos Gold.
+La infraestructura de ingesta y calidad es compartida por `Momentum_systematic_strategies/`. Las notebooks no modifican los archivos Gold.
