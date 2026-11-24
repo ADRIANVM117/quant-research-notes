@@ -16,6 +16,15 @@ El universo inicial utiliza siete ETFs líquidos como proxies económicos observ
 
 La investigación se concentra en QQQ, XLE y XLF como activos objetivo. XLE se examina con mayor detalle por el contraste histórico observado entre la señal sistemática y sus benchmarks, sin confundir esa selección retrospectiva con evidencia independiente.
 
+## Notebooks y artículos
+
+| Notebook (título y enlace relativo) | Artículo correspondiente |
+| --- | --- |
+| [01 — Fundamentos de momentum factorial](notebooks/01_factor_momentum_foundations.ipynb) | [**Artículo 01 — ¿Cuánto del momentum de un activo puede atribuirse a factores sistemáticos?**](https://adrianvm117.github.io/en/research/notes/01_factor_momentum_attribution.html) |
+| [02 — Prueba de señales de momentum factorial](notebooks/02_factor_momentum_signal_test.ipynb) | [**Artículo 01 — ¿Cuánto del momentum de un activo puede atribuirse a factores sistemáticos?**](https://adrianvm117.github.io/en/research/notes/01_factor_momentum_attribution.html) |
+| [01 — XLE: viabilidad de ejecución](strategy_candidates/xle_systematic_momentum/notebooks/01_execution_feasibility.ipynb) | [**Artículo 02 — De Factor Momentum a XLE: señal long/cash, ejecución y límites económicos**](https://adrianvm117.github.io/en/research/notes/02_xle_execution_economic_limits.html) |
+| [02 — XLE: revisión previa a paper trading](strategy_candidates/xle_systematic_momentum/notebooks/02_pre_paper_review.ipynb) | [**Artículo 02 — De Factor Momentum a XLE: señal long/cash, ejecución y límites económicos**](https://adrianvm117.github.io/en/research/notes/02_xle_execution_economic_limits.html) |
+
 ## Metodología factorial
 
 El modelo descriptivo parte de:
@@ -52,14 +61,6 @@ La simulación de ejecución usa USD 10,000 iniciales, acciones enteras, efectiv
 
 Son resultados históricos simulados, no PnL real de IBKR. Las comisiones, el slippage y la contabilidad de dividendos/splits son supuestos de simulación; no incluyen bid/ask histórico, latencia, impacto de mercado ni confirmación prospectiva.
 
-## Notebooks y artículos
-
-| Notebook (título y enlace relativo) | Artículo correspondiente |
-| --- | --- |
-| [01 — Fundamentos de momentum factorial](notebooks/01_factor_momentum_foundations.ipynb) | Artículo 01 — «¿Cuánto del momentum de un activo puede atribuirse a factores sistemáticos?» — Pendiente |
-| [02 — Prueba de señales de momentum factorial](notebooks/02_factor_momentum_signal_test.ipynb) | Artículo 01 — «¿Cuánto del momentum de un activo puede atribuirse a factores sistemáticos?» — Pendiente |
-| [01 — XLE: viabilidad de ejecución](strategy_candidates/xle_systematic_momentum/notebooks/01_execution_feasibility.ipynb) | Artículo 02 — «De Factor Momentum a XLE: señal long/cash, ejecución y límites económicos» — Pendiente |
-| [02 — XLE: revisión previa a paper trading](strategy_candidates/xle_systematic_momentum/notebooks/02_pre_paper_review.ipynb) | Artículo 02 — «De Factor Momentum a XLE: señal long/cash, ejecución y límites económicos» — Pendiente |
 
 ## Reproducibilidad en Google Colab
 
