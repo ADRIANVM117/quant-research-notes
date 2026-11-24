@@ -2,7 +2,7 @@
 .venv/
 data/raw/
 data/parquet/
-data/gold/
+#data/gold/
 data/quality/
 data/.tmp/
 series/
