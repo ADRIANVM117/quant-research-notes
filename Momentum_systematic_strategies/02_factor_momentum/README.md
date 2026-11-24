@@ -20,7 +20,9 @@ La investigación se concentra en QQQ, XLE y XLF como activos objetivo. XLE se e
 
 El modelo descriptivo parte de:
 
-$ R_{i,t} = \alpha_i + \beta_{i,MKT} MKT_t + \beta_{i,SIZE} SIZE_t + \beta_{i,GV} GV_t + \epsilon_{i,t} $
+$$
+R_{i,t} = \alpha_i + \beta_{i,\mathrm{MKT}} MKT_t + \beta_{i,\mathrm{SIZE}} SIZE_t + \beta_{i,\mathrm{GV}} GV_t + \epsilon_{i,t}
+$$
 
 - $MKT$ se representa con SPY.
 - $SIZE$ se representa con IWM menos SPY.
