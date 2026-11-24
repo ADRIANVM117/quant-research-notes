@@ -6,7 +6,7 @@ Esta línea estudia si parte del momentum observado en ETFs puede entenderse med
 
 ![Evolución histórica simulada del capital: XLE Systematic Momentum frente a XLE Buy & Hold, ambas con comisiones modeladas y 5 bps de slippage.](assets/xle_systematic_vs_buyhold_fixed_5bps.gif)
 
-*Evolución de USD 10,000 en dos carteras históricas simuladas, con comisiones IBKR Pro Fixed modeladas y 5 bps de slippage adverso. XLE fue seleccionada retrospectivamente; los resultados no constituyen validación prospectiva.*
+*Evolución de USD 10,000 en dos carteras históricas simuladas, con comisiones IBKR Pro Fixed modeladas y 5 bps de slippage adverso. XLE fue seleccionada retrospectivamente.*
 
 [Ver gráfica estática](assets/xle_systematic_vs_buyhold_fixed_5bps.png)
 
