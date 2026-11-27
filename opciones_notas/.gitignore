@@ -1,0 +1,16 @@
+.env
+.venv/
+data/raw/
+data/parquet/
+data/gold/
+data/quality/
+data/.tmp/
+series/
+__pycache__/
+*.py[cod]
+
+# Descargas educativas de ThetaData: se conservan localmente, fuera de Git.
+data/stocks_data/raw/
+data/stocks_data/processed/
+data/options_data/raw/
+data/options_data/processed/
