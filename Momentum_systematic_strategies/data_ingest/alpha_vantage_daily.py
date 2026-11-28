@@ -19,9 +19,20 @@ from dotenv import dotenv_values, load_dotenv
 
 API_URL = "https://www.alphavantage.co/query"
 API_FUNCTION = "TIME_SERIES_DAILY_ADJUSTED"
+# Conserva el contrato habitual. Los backfills deben indicar una fecha anterior
+# de forma explícita y escribir únicamente en un destino aislado.
 START_DATE = date(2018, 1, 1)
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 ENV_FILE = PROJECT_ROOT / ".env"
+CURRENT_DATA_ROOT = PROJECT_ROOT / "data"
+STAGING_ROOT = CURRENT_DATA_ROOT / "staging"
+VERSIONED_GOLD_ROOT = CURRENT_DATA_ROOT / "gold_versions"
+PROTECTED_DATA_ROOTS = (
+    CURRENT_DATA_ROOT / "raw",
+    CURRENT_DATA_ROOT / "parquet",
+    CURRENT_DATA_ROOT / "gold",
+    CURRENT_DATA_ROOT / "quality",
+)
 ASSET_CLASS_DIRECTORIES = {
     "equity": PROJECT_ROOT / "data" / "parquet" / "equity",
     "etf": PROJECT_ROOT / "data" / "parquet" / "etf",
@@ -59,6 +70,48 @@ REQUIRED_DAILY_FIELDS = {
     "7. dividend amount": "dividend_amount",
     "8. split coefficient": "split_coefficient",
 }
+
+
+def _resolved_path(path: Path) -> Path:
+    """Resolve an existing path or its existing parents before safety checks."""
+    return path.expanduser().resolve()
+
+
+def _paths_overlap(left: Path, right: Path) -> bool:
+    """Return whether either resolved path contains the other."""
+    return left == right or left.is_relative_to(right) or right.is_relative_to(left)
+
+
+def require_historical_staging(path: Path, label: str) -> Path:
+    """Accept only a child of the dedicated staging root, never protected data."""
+    resolved = _resolved_path(path)
+    staging = _resolved_path(STAGING_ROOT)
+    if resolved == staging or not resolved.is_relative_to(staging):
+        raise AlphaVantageDailyError(
+            f"{label} histórico debe ser un subdirectorio explícito de {staging}."
+        )
+    for protected in PROTECTED_DATA_ROOTS:
+        if _paths_overlap(resolved, _resolved_path(protected)):
+            raise AlphaVantageDailyError(
+                f"{label} histórico se superpone con una ruta protegida: {_resolved_path(protected)}."
+            )
+    return resolved
+
+
+def require_versioned_gold_destination(path: Path) -> Path:
+    """Accept only an explicit child of the separate versioned-Gold root."""
+    resolved = _resolved_path(path)
+    versioned_root = _resolved_path(VERSIONED_GOLD_ROOT)
+    if resolved == versioned_root or not resolved.is_relative_to(versioned_root):
+        raise AlphaVantageDailyError(
+            f"La promoción histórica requiere un subdirectorio versionado de {versioned_root}."
+        )
+    for protected in PROTECTED_DATA_ROOTS:
+        if _paths_overlap(resolved, _resolved_path(protected)):
+            raise AlphaVantageDailyError(
+                f"El destino Gold histórico se superpone con una ruta protegida: {_resolved_path(protected)}."
+            )
+    return resolved
 
 
 class AlphaVantageDailyError(RuntimeError):
@@ -134,9 +187,18 @@ def request_daily_adjusted_raw(symbol: str, outputsize: str, env_file: Path = EN
     return status, raw, payload
 
 
-def update_isolated_daily(symbol: str, asset_class: str, destination_root: Path, target_date: date) -> dict[str, object]:
+def update_isolated_daily(
+    symbol: str,
+    asset_class: str,
+    destination_root: Path,
+    target_date: date,
+    start_date: date = START_DATE,
+) -> dict[str, object]:
     """Write raw and Parquet only below an explicit research-owned destination."""
     normalized = normalize_symbol(symbol)
+    destination_root = _resolved_path(destination_root)
+    if start_date < START_DATE:
+        destination_root = require_historical_staging(destination_root, "--destination-root")
     raw_dir = destination_root / "raw"
     raw_path = raw_dir / f"{normalized}_{target_date.isoformat()}.json"
     reused_raw = raw_path.exists()
@@ -149,7 +211,7 @@ def update_isolated_daily(symbol: str, asset_class: str, destination_root: Path,
         status: int | None = None
     else:
         status, raw, payload = request_daily_adjusted_raw(normalized, "full", ENV_FILE, False)
-    frame = parse_daily_payload(payload, normalized)
+    frame = parse_daily_payload(payload, normalized, start_date=start_date)
     validate_daily_frame(frame)
     latest = frame.get_column("session_date").max()
     completeness = "COMPLETE" if latest == target_date else "STALE"
@@ -162,7 +224,7 @@ def update_isolated_daily(symbol: str, asset_class: str, destination_root: Path,
     else:
         final_frame = frame
     write_daily_atomically(final_frame, destination)
-    return {"http_status": status, "symbol": normalized, "effective_date": latest.isoformat(), "status": completeness, "raw_path": str(raw_path), "raw_sha256": hashlib.sha256(raw).hexdigest(), "validation": "PASS", "parquet_path": str(destination), "raw_reused": reused_raw}
+    return {"http_status": status, "symbol": normalized, "effective_date": latest.isoformat(), "status": completeness, "start_date": start_date.isoformat(), "raw_path": str(raw_path), "raw_sha256": hashlib.sha256(raw).hexdigest(), "validation": "PASS", "parquet_path": str(destination), "raw_reused": reused_raw}
 
 
 def _required_value(values: dict[str, Any], provider_key: str, session_date: str) -> str:
@@ -174,7 +236,9 @@ def _required_value(values: dict[str, Any], provider_key: str, session_date: str
     return str(value)
 
 
-def parse_daily_payload(payload: dict[str, Any], symbol: str) -> pl.DataFrame:
+def parse_daily_payload(
+    payload: dict[str, Any], symbol: str, start_date: date = START_DATE
+) -> pl.DataFrame:
     """Convierte la respuesta del proveedor al esquema canónico diario."""
     metadata = payload.get("Meta Data")
     series = payload.get("Time Series (Daily)")
@@ -228,7 +292,7 @@ def parse_daily_payload(payload: dict[str, Any], symbol: str) -> pl.DataFrame:
 
     frame = pl.DataFrame(rows, schema=PARQUET_SCHEMA, strict=True)
     return (
-        frame.filter(pl.col("session_date") >= pl.lit(START_DATE))
+        frame.filter(pl.col("session_date") >= pl.lit(start_date))
         .sort("session_date")
     )
 
@@ -237,7 +301,7 @@ def validate_daily_frame(frame: pl.DataFrame) -> None:
     """Comprueba claves, tipos y restricciones económicas mínimas."""
     if frame.is_empty():
         raise AlphaVantageDailyError(
-            f"No quedaron observaciones desde {START_DATE.isoformat()}."
+            "No quedaron observaciones desde la fecha inicial solicitada."
         )
     if frame.columns != list(PARQUET_SCHEMA):
         raise AlphaVantageDailyError("El esquema de columnas no coincide con el contrato diario.")
@@ -324,8 +388,14 @@ def write_daily_atomically(frame: pl.DataFrame, destination: Path) -> None:
             temporary_path.unlink()
 
 
-def update_daily_history(symbol: str, asset_class: str) -> Path:
+def update_daily_history(
+    symbol: str, asset_class: str, start_date: date = START_DATE
+) -> Path:
     """Descarga y actualiza el histórico diario ajustado de un único instrumento."""
+    if start_date < START_DATE:
+        raise AlphaVantageDailyError(
+            "La actualización habitual no admite backfill histórico; use un destino aislado."
+        )
     normalized_symbol = normalize_symbol(symbol)
     destination = output_path(normalized_symbol, asset_class)
     exists = destination.exists()
@@ -333,7 +403,7 @@ def update_daily_history(symbol: str, asset_class: str) -> Path:
         normalized_symbol,
         outputsize="compact" if exists else "full",
     )
-    downloaded = parse_daily_payload(payload, normalized_symbol)
+    downloaded = parse_daily_payload(payload, normalized_symbol, start_date=start_date)
     validate_daily_frame(downloaded)
 
     if exists:
@@ -355,6 +425,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--asset-class", required=True, choices=("equity", "etf"))
     parser.add_argument("--destination-root", type=Path)
     parser.add_argument("--target-date", type=date.fromisoformat)
+    parser.add_argument("--start-date", type=date.fromisoformat, default=START_DATE)
     return parser.parse_args()
 
 
@@ -363,10 +434,14 @@ def main() -> None:
     args = parse_args()
     if bool(args.destination_root) != bool(args.target_date):
         raise AlphaVantageDailyError("--destination-root y --target-date deben indicarse juntos.")
+    if args.start_date < START_DATE and not args.destination_root:
+        raise AlphaVantageDailyError(
+            "Un --start-date anterior a 2018-01-01 requiere --destination-root aislado."
+        )
     if args.destination_root:
-        print(json.dumps(update_isolated_daily(args.symbol, args.asset_class, args.destination_root, args.target_date), sort_keys=True))
+        print(json.dumps(update_isolated_daily(args.symbol, args.asset_class, args.destination_root, args.target_date, args.start_date), sort_keys=True))
     else:
-        print(update_daily_history(args.symbol, args.asset_class))
+        print(update_daily_history(args.symbol, args.asset_class, args.start_date))
 
 
 if __name__ == "__main__":
