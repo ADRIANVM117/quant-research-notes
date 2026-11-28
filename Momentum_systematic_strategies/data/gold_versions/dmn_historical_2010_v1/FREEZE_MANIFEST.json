@@ -1,0 +1,33 @@
+{
+  "bil_policy": "SUBGOLD_REVIEW; not promoted",
+  "created_at_utc": "2026-11-28T02:13:39.164511+00:00",
+  "dataset_version": "dmn_historical_2010_v1",
+  "excluded": [
+    "all conditional_bil_* matrices",
+    "BIL"
+  ],
+  "included_files": [
+    "main_adjusted_close.parquet",
+    "main_simple_returns.parquet",
+    "main_log_returns.parquet",
+    "PANEL_MANIFEST.json",
+    "LINEAGE.csv",
+    "PANEL_VALIDATION.md",
+    "PANEL_TEST_RESULTS.md",
+    "FROZEN_GOLD_INTEGRITY.csv",
+    "PRIOR_REFERENCE_RECONCILIATION.csv"
+  ],
+  "promotion_method": "same-volume temporary copy, complete SHA-256 verification, atomic directory rename",
+  "sha256": {
+    "FROZEN_GOLD_INTEGRITY.csv": "6e5ec999c4e0f74c803fbf51f4e97213fef41b6e3289580d9663c74d940a7db1",
+    "LINEAGE.csv": "be5d0d93280a3ac6e9adbb3bc1df3b79b7610e86e4b4403eaa26ca1b6d508275",
+    "PANEL_MANIFEST.json": "f64810597bf38af740b39c25eabb87bbc34244309d59cdd8ccd7ea946129b90b",
+    "PANEL_TEST_RESULTS.md": "3eefb587dd9e0880261f42d7958da83bd802ede9038dfc3dbbb8bcf9ace3ff8f",
+    "PANEL_VALIDATION.md": "e24a32323519f9c6d2f9950a7b2b022b227fd9f6689f7e4e6e382db38bf28bd1",
+    "PRIOR_REFERENCE_RECONCILIATION.csv": "b1425793dd60bf8416620913be9562758d26371a022025788967f30e4a866471",
+    "main_adjusted_close.parquet": "468a589340512c23aa311816848564f9e1b1ef4a23fca4f374224a0e6d986c9a",
+    "main_log_returns.parquet": "39c46adac15f9b59b28d034949d173d09e6d9ac82442888e4034fe36c252488e",
+    "main_simple_returns.parquet": "a424c58e6d30943905e74b693bc4b7848924c74d21ca4eb2b17b3a3739827293"
+  },
+  "source_panel_relative_path": "data/staging/historical_2010/panels/dmn_historical_2010_v1"
+}

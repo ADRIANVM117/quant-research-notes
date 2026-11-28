@@ -1,0 +1,92 @@
+﻿[
+    {
+        "symbol":  "SPY",
+        "started_utc":  "2026-11-28T00:26:26.4585818Z",
+        "finished_utc":  "2026-11-28T00:26:30.0718402Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\SPY",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\SPY",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\SPY.log"
+    },
+    {
+        "symbol":  "QQQ",
+        "started_utc":  "2026-11-28T00:26:30.1320311Z",
+        "finished_utc":  "2026-11-28T00:26:33.2266207Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\QQQ",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\QQQ",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\QQQ.log"
+    },
+    {
+        "symbol":  "IWM",
+        "started_utc":  "2026-11-28T00:26:33.2306109Z",
+        "finished_utc":  "2026-11-28T00:26:35.9373090Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\IWM",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\IWM",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\IWM.log"
+    },
+    {
+        "symbol":  "IWD",
+        "started_utc":  "2026-11-28T00:26:35.9373090Z",
+        "finished_utc":  "2026-11-28T00:26:38.7267919Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\IWD",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\IWD",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\IWD.log"
+    },
+    {
+        "symbol":  "IWF",
+        "started_utc":  "2026-11-28T00:26:38.7317789Z",
+        "finished_utc":  "2026-11-28T00:26:41.4226163Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\IWF",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\IWF",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\IWF.log"
+    },
+    {
+        "symbol":  "XLE",
+        "started_utc":  "2026-11-28T00:26:41.4226163Z",
+        "finished_utc":  "2026-11-28T00:26:44.9267004Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\XLE",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\XLE",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\XLE.log"
+    },
+    {
+        "symbol":  "XLF",
+        "started_utc":  "2026-11-28T00:26:44.9267004Z",
+        "finished_utc":  "2026-11-28T00:26:47.7249351Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\XLF",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\XLF",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\XLF.log"
+    },
+    {
+        "symbol":  "GLD",
+        "started_utc":  "2026-11-28T00:26:47.7283273Z",
+        "finished_utc":  "2026-11-28T00:26:50.5710117Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\GLD",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\GLD",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\GLD.log"
+    },
+    {
+        "symbol":  "SHY",
+        "started_utc":  "2026-11-28T00:26:50.5710117Z",
+        "finished_utc":  "2026-11-28T00:26:53.2401118Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\SHY",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\SHY",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\SHY.log"
+    },
+    {
+        "symbol":  "BIL",
+        "started_utc":  "2026-11-28T00:26:53.2401118Z",
+        "finished_utc":  "2026-11-28T00:26:56.1720537Z",
+        "exit_code":  0,
+        "destination_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\BIL",
+        "quality_root":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\quality\\BIL",
+        "log_path":  "Momentum_systematic_strategies\\data\\staging\\historical_2010\\qr_dmn11\\execution_logs\\BIL.log"
+    }
+]

@@ -1,0 +1,45 @@
+{
+  "staging_rows": 4252,
+  "staging_start": "2010-01-04",
+  "staging_end": "2026-11-27",
+  "silver_rows": 2203,
+  "silver_start": "2018-01-02",
+  "silver_end": "2026-10-07",
+  "overlap_sessions": 2203,
+  "field_comparison": [
+    {
+      "column": "open",
+      "mismatched_rows": 0
+    },
+    {
+      "column": "high",
+      "mismatched_rows": 0
+    },
+    {
+      "column": "low",
+      "mismatched_rows": 0
+    },
+    {
+      "column": "close",
+      "mismatched_rows": 0
+    },
+    {
+      "column": "adjusted_close",
+      "mismatched_rows": 2203,
+      "max_abs_difference": 0.5897634307484907,
+      "mean_abs_difference": 0.41444184855977495
+    },
+    {
+      "column": "volume",
+      "mismatched_rows": 0
+    },
+    {
+      "column": "dividend_amount",
+      "mismatched_rows": 0
+    },
+    {
+      "column": "split_coefficient",
+      "mismatched_rows": 0
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "bil_policy": "conditional variant only; quality status remains SUBGOLD_REVIEW",
+  "calendar": "XNYS",
+  "common_end": "2026-11-27",
+  "common_sessions": 4252,
+  "common_start": "2010-01-04",
+  "conditional_bil_symbols": [
+    "SPY",
+    "QQQ",
+    "IWM",
+    "IWD",
+    "IWF",
+    "XLE",
+    "XLF",
+    "GLD",
+    "TLT",
+    "SHY",
+    "BIL"
+  ],
+  "created_at_utc": "2026-11-28T01:00:49.811983+00:00",
+  "frozen_gold_integrity_sha256": "6e5ec999c4e0f74c803fbf51f4e97213fef41b6e3289580d9663c74d940a7db1",
+  "lineage_file_sha256": "be5d0d93280a3ac6e9adbb3bc1df3b79b7610e86e4b4403eaa26ca1b6d508275",
+  "main_symbols": [
+    "SPY",
+    "QQQ",
+    "IWM",
+    "IWD",
+    "IWF",
+    "XLE",
+    "XLF",
+    "GLD",
+    "TLT",
+    "SHY"
+  ],
+  "matrix_sha256": {
+    "conditional_bil_adjusted_close.parquet": "3ab517983edfcee4f1f89029151981a7246a41d58aa287f7c755c6e029820e1c",
+    "conditional_bil_log_returns.parquet": "794df0393cf08aa7097d243ca7a126a5fef2d8cd9c34b4f1c070f85ff8912825",
+    "conditional_bil_simple_returns.parquet": "339aa21a7e880cd70cb40dcc3525e56be3400689ccbb4f1f28282a3ff71dd3bc",
+    "main_adjusted_close.parquet": "468a589340512c23aa311816848564f9e1b1ef4a23fca4f374224a0e6d986c9a",
+    "main_log_returns.parquet": "39c46adac15f9b59b28d034949d173d09e6d9ac82442888e4034fe36c252488e",
+    "main_simple_returns.parquet": "a424c58e6d30943905e74b693bc4b7848924c74d21ca4eb2b17b3a3739827293"
+  },
+  "panel_version": "dmn_historical_2010_v1",
+  "prior_reference_reconciliation_sha256": "b1425793dd60bf8416620913be9562758d26371a022025788967f30e4a866471",
+  "returns": {
+    "log": "log(adjusted_close[t]) - log(adjusted_close[t-1])",
+    "missing_price_policy": "no imputation; construction requires complete consecutive XNYS sessions",
+    "simple": "adjusted_close[t] / adjusted_close[t-1] - 1"
+  },
+  "scope": "staging-only candidate; no Gold promotion",
+  "warmup": {
+    "ewma_lambda_094_min_20_returns": "2010-02-02",
+    "first_next_session_target_after_composite_sequence": "2010-10-04",
+    "first_price": "2010-01-04",
+    "first_return": "2010-01-05",
+    "lstm_63_composite_feature_endpoint": "2010-10-01",
+    "lstm_63_return_sessions": "2010-04-06",
+    "momentum_126_sessions": "2010-07-06"
+  }
+}

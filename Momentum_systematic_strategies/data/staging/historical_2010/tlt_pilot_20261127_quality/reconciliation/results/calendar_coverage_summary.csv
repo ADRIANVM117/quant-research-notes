@@ -1,0 +1,2 @@
+calendar,start_date,end_date,expected_sessions,observed_sessions,missing_sessions,extraordinary_dates
+XNYS,2010-01-04,2026-11-27,4252,4252,0,0

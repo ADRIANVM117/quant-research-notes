@@ -1,0 +1,12 @@
+symbol,reference_layer,reference_path,overlap_sessions,ratio_min,ratio_median,ratio_max,ratio_std,max_abs_log_return_difference,dividend_field_mismatches,split_field_mismatches,post_reference_dividend_sessions,classification
+BIL,Silver,data/parquet/etf/BIL.parquet,2203,0.9966365234544351,0.9966365234544358,0.9966365234544362,2.3595316105260983e-16,8.881784197001252e-16,0,0,1,RETURNS_EQUIVALENT_CONSTANT_SCALE
+GLD,Gold,data/gold/daily_series/etf/GLD.parquet,2232,1.0,1.0,1.0,0.0,0.0,0,0,0,RETURNS_EQUIVALENT_CONSTANT_SCALE
+IWD,Gold,data/gold/daily_series/etf/IWD.parquet,2233,1.0,1.0,1.0,0.0,0.0,0,0,0,RETURNS_EQUIVALENT_CONSTANT_SCALE
+IWF,Gold,data/gold/daily_series/etf/IWF.parquet,2233,1.0,1.0,1.0,0.0,0.0,0,0,0,RETURNS_EQUIVALENT_CONSTANT_SCALE
+IWM,Gold,data/gold/daily_series/etf/IWM.parquet,2233,1.0,1.0,1.0,0.0,0.0,0,0,0,RETURNS_EQUIVALENT_CONSTANT_SCALE
+QQQ,Gold,data/gold/daily_series/etf/QQQ.parquet,2232,1.0,1.0,1.0,0.0,0.0,0,0,0,RETURNS_EQUIVALENT_CONSTANT_SCALE
+SHY,Silver,data/parquet/etf/SHY.parquet,2203,0.9968864004502691,0.9968864004502705,0.9968864004502712,5.609046605419863e-16,8.881784197001252e-16,0,0,1,RETURNS_EQUIVALENT_CONSTANT_SCALE
+SPY,Gold,data/gold/daily_series/etf/SPY.parquet,2232,1.0,1.0,1.0,0.0,0.0,0,0,0,RETURNS_EQUIVALENT_CONSTANT_SCALE
+TLT,Silver,data/parquet/etf/TLT.parquet,2203,0.9958186460845789,0.9958186460845804,0.995818646084581,4.288599853074984e-16,8.881784197001252e-16,0,0,1,RETURNS_EQUIVALENT_CONSTANT_SCALE
+XLE,Gold,data/gold/daily_series/etf/XLE.parquet,2232,1.0,1.0,1.0,0.0,0.0,0,0,0,RETURNS_EQUIVALENT_CONSTANT_SCALE
+XLF,Gold,data/gold/daily_series/etf/XLF.parquet,2233,1.0,1.0,1.0,0.0,0.0,0,0,0,RETURNS_EQUIVALENT_CONSTANT_SCALE

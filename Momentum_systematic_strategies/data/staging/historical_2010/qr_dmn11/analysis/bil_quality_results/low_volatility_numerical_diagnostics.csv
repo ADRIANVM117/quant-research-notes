@@ -1,0 +1,2 @@
+daily_return_std,annualized_return_volatility,ewma_annual_vol_min,ewma_annual_vol_median,ewma_annual_vol_p05,ewma_annual_vol_p95,ewma_sessions_at_or_below_12pct,ewma_sessions,rolling_63_zero_std_windows,rolling_63_min_std
+0.00016659919322433768,0.002644680203373567,0.0010583196712646912,0.0023335094198100653,0.0013566854170587433,0.0033623885526989296,4231,4231,0,0.00007333372255691396

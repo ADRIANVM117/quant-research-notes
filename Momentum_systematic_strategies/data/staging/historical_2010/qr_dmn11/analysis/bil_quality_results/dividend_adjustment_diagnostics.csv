@@ -1,0 +1,2 @@
+dividend_sessions,max_abs_adjusted_return_on_dividend,p95_abs_adjusted_return_on_dividend,p99_abs_adjusted_return_non_dividend,all_dividend_adjusted_returns_finite
+99,0.0005524572300317037,0.00039302984099335225,0.00054519681605073,true

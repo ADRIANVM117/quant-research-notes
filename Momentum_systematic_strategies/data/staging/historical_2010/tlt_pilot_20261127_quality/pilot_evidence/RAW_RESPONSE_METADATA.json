@@ -1,0 +1,27 @@
+{
+  "expected_session_date": "2026-11-27",
+  "function": "TIME_SERIES_DAILY_ADJUSTED",
+  "no_promote": true,
+  "parquet_relative_path": "Momentum_systematic_strategies/data/staging/historical_2010/tlt_pilot_20261127/parquet/etf/TLT.parquet",
+  "parquet_sha256": "81fb80209a69cab30c14d4c129f3b9128e89791d607e24f9e09af3ac54f85d01",
+  "provider": "Alpha Vantage",
+  "provider_daily_observation_count": 6125,
+  "provider_meta_data": {
+    "1. Information": "Daily Time Series with Splits and Dividend Events",
+    "2. Symbol": "TLT",
+    "3. Last Refreshed": "2026-11-27",
+    "4. Output Size": "Full size",
+    "5. Time Zone": "US/Eastern"
+  },
+  "raw_relative_path": "Momentum_systematic_strategies/data/staging/historical_2010/tlt_pilot_20261127/raw/TLT_2026-11-27.json",
+  "raw_sha256": "62b03f8c40bb7fa9cc92678a48a82cacf026ef58f1f5e5c064de92acbd74922d",
+  "raw_size_bytes": 2089695,
+  "request_count": 1,
+  "request_parameters": {
+    "function": "TIME_SERIES_DAILY_ADJUSTED",
+    "outputsize": "full",
+    "symbol": "TLT"
+  },
+  "start_date": "2010-01-01",
+  "symbol_requested": "TLT"
+}

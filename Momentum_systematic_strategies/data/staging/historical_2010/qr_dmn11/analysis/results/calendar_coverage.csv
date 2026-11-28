@@ -1,0 +1,12 @@
+symbol,calendar,expected_sessions,observed_sessions,missing_sessions,extraordinary_dates,missing_dates,extraordinary_dates_list
+BIL,XNYS,4252,4252,0,0,"",""
+GLD,XNYS,4252,4252,0,0,"",""
+IWD,XNYS,4252,4252,0,0,"",""
+IWF,XNYS,4252,4252,0,0,"",""
+IWM,XNYS,4252,4252,0,0,"",""
+QQQ,XNYS,4252,4252,0,0,"",""
+SHY,XNYS,4252,4252,0,0,"",""
+SPY,XNYS,4252,4252,0,0,"",""
+TLT,XNYS,4252,4252,0,0,"",""
+XLE,XNYS,4252,4252,0,0,"",""
+XLF,XNYS,4252,4252,0,0,"",""
