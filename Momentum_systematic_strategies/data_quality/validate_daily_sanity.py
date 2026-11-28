@@ -18,6 +18,14 @@ ROOT = Path(__file__).resolve().parents[1]
 SILVER = ROOT / "data" / "parquet"
 GOLD = ROOT / "data" / "gold" / "daily_series"
 QUALITY = ROOT / "data" / "quality"
+STAGING_ROOT = ROOT / "data" / "staging"
+VERSIONED_GOLD_ROOT = ROOT / "data" / "gold_versions"
+PROTECTED_DATA_ROOTS = (
+    ROOT / "data" / "raw",
+    ROOT / "data" / "parquet",
+    ROOT / "data" / "gold",
+    ROOT / "data" / "quality",
+)
 EXPECTED = {
     "symbol_requested": pl.String, "session_date": pl.Date, "open": pl.Float64,
     "high": pl.Float64, "low": pl.Float64, "close": pl.Float64,
@@ -29,6 +37,30 @@ EXPECTED = {
 PRICE = ("open", "high", "low", "close", "adjusted_close")
 STATUS_COLUMNS = ["run_timestamp_utc", "asset_class", "symbol_requested", "silver_path", "status", "row_count", "min_session_date", "max_session_date", "rejection_count", "warning_count", "missing_session_count", "identical_bar_run_count", "positive_dividend_sessions", "non_unit_split_sessions", "gold_path", "approval_method", "manual_decision", "manual_decision_reason", "pending_action"]
 ISSUE_COLUMNS = ["run_timestamp_utc", "asset_class", "symbol_requested", "severity", "rule_id", "rule_name", "session_date", "period_start", "period_end", "observed_value", "expected_condition", "details", "silver_path"]
+
+def resolved_path(path: Path) -> Path:
+    return path.expanduser().resolve()
+
+def paths_overlap(left: Path, right: Path) -> bool:
+    return left == right or left.is_relative_to(right) or right.is_relative_to(left)
+
+def require_historical_staging(path: Path, label: str) -> Path:
+    resolved = resolved_path(path); staging = resolved_path(STAGING_ROOT)
+    if resolved == staging or not resolved.is_relative_to(staging):
+        raise ValueError(f"{label} histórico debe ser un subdirectorio explícito de {staging}.")
+    for protected in PROTECTED_DATA_ROOTS:
+        if paths_overlap(resolved, resolved_path(protected)):
+            raise ValueError(f"{label} histórico se superpone con una ruta protegida: {resolved_path(protected)}.")
+    return resolved
+
+def require_versioned_gold_destination(path: Path) -> Path:
+    resolved = resolved_path(path); versioned = resolved_path(VERSIONED_GOLD_ROOT)
+    if resolved == versioned or not resolved.is_relative_to(versioned):
+        raise ValueError(f"--gold-root histórico debe ser un subdirectorio versionado de {versioned}.")
+    for protected in PROTECTED_DATA_ROOTS:
+        if paths_overlap(resolved, resolved_path(protected)):
+            raise ValueError(f"--gold-root histórico se superpone con una ruta protegida: {resolved_path(protected)}.")
+    return resolved
 
 def issue(now, asset, symbol, silver, severity, rule, name, **values):
     return {"run_timestamp_utc": now, "asset_class": asset, "symbol_requested": symbol,
@@ -136,13 +168,29 @@ def run_self_test():
         assert gold.read_bytes()==old
 
 def main():
-    parser=argparse.ArgumentParser(description="Data Sanity v1 de Parquet diarios Silver."); parser.add_argument("--self-test",action="store_true"); parser.add_argument("--asset-class",choices=("equity","etf")); parser.add_argument("--symbol"); args=parser.parse_args()
+    parser=argparse.ArgumentParser(description="Data Sanity v1 de Parquet diarios Silver."); parser.add_argument("--self-test",action="store_true"); parser.add_argument("--asset-class",choices=("equity","etf")); parser.add_argument("--symbol")
+    parser.add_argument("--silver-root",type=Path,help="Raíz Silver independiente; por defecto data/parquet.")
+    parser.add_argument("--gold-root",type=Path,help="Raíz Gold independiente; por defecto data/gold/daily_series.")
+    parser.add_argument("--quality-root",type=Path,help="Raíz para reportes de calidad; por defecto data/quality.")
+    parser.add_argument("--no-promote",action="store_true",help="Audita sin copiar ningún archivo a Gold.")
+    args=parser.parse_args()
     if args.self_test: run_self_test(); print("OFFLINE_TESTS=PASS"); return
     if args.symbol and not args.asset_class: parser.error("--symbol requiere --asset-class")
-    now=datetime.now(timezone.utc).isoformat(); today=datetime.now(ZoneInfo("America/Mexico_City")).date(); decisions=load_manual(); audited=[]; frames={}; issues=[]
+    silver_root=(args.silver_root or SILVER).resolve(); gold_root=(args.gold_root or GOLD).resolve(); quality_root=(args.quality_root or QUALITY).resolve()
+    try:
+        if silver_root != SILVER.resolve(): silver_root=require_historical_staging(silver_root,"--silver-root")
+        if quality_root != QUALITY.resolve(): quality_root=require_historical_staging(quality_root,"--quality-root")
+        if args.gold_root is not None: gold_root=require_versioned_gold_destination(gold_root)
+    except ValueError as exc:
+        parser.error(str(exc))
+    if silver_root != SILVER.resolve() and quality_root == QUALITY.resolve():
+        parser.error("Silver aislado requiere --quality-root aislado.")
+    if silver_root != SILVER.resolve() and not args.no_promote and args.gold_root is None:
+        parser.error("Silver aislado requiere --no-promote o un --gold-root versionado explícito.")
+    now=datetime.now(timezone.utc).isoformat(); today=datetime.now(ZoneInfo("America/Mexico_City")).date(); decisions=load_manual(quality_root/'manual_quality_decisions.csv'); audited=[]; frames={}; issues=[]
     asset_classes=(args.asset_class,) if args.asset_class else ("equity","etf")
     for asset in asset_classes:
-        for silver in sorted((SILVER/asset).glob("*.parquet")):
+        for silver in sorted((silver_root/asset).glob("*.parquet")):
             symbol=silver.stem
             if args.symbol and symbol != args.symbol.strip().upper(): continue
             try: frame=pl.read_parquet(silver); rejects=validate_frame(frame,today,now,asset,symbol,silver)
@@ -167,12 +215,12 @@ def main():
         if decision:
             if decision['manual_decision']=='KEEP_IN_SUBGOLD': status='SUBGOLD_REVIEW'; method='PENDING_REVIEW'
             elif not rejects and {x['rule_id'] for x in warnings}.issubset(set(filter(None,decision['approved_warning_rule_ids'].split(',')))): status='GOLD_APPROVED'; method='MANUAL'
-        if status=="GOLD_APPROVED":
-            target=GOLD/asset/silver.name; copy_gold(silver,target); gold_path=str(target)
+        if status=="GOLD_APPROVED" and not args.no_promote:
+            target=gold_root/asset/silver.name; copy_gold(silver,target); gold_path=str(target)
         positive=frame.filter(pl.col("dividend_amount")>0).height if frame is not None and not rejects else 0; splits=frame.filter(pl.col("split_coefficient")!=1).height if frame is not None and not rejects else 0
         status_rows.append({"run_timestamp_utc":now,"asset_class":asset,"symbol_requested":symbol,"silver_path":str(silver),"status":status,"row_count":frame.height if frame is not None else 0,"min_session_date":str(frame.get_column("session_date").min()) if frame is not None and not rejects else "","max_session_date":str(frame.get_column("session_date").max()) if frame is not None and not rejects else "","rejection_count":len(rejects),"warning_count":len(warnings),"missing_session_count":sum(x["rule_id"]=="R7" for x in warnings),"identical_bar_run_count":sum(x["rule_id"]=="R8" for x in warnings),"positive_dividend_sessions":positive,"non_unit_split_sessions":splits,"gold_path":gold_path,"approval_method":method,"manual_decision":decision['manual_decision'] if decision else '',"manual_decision_reason":decision['decision_reason'] if decision else '',"pending_action":decision['pending_action'] if decision else ''})
-    atomic_csv(QUALITY/"series_status.csv",STATUS_COLUMNS,status_rows); atomic_csv(QUALITY/"quality_issues.csv",ISSUE_COLUMNS,issues)
+    atomic_csv(quality_root/"series_status.csv",STATUS_COLUMNS,status_rows); atomic_csv(quality_root/"quality_issues.csv",ISSUE_COLUMNS,issues)
     groups={k:[r["symbol_requested"] for r in status_rows if r["status"]==k] for k in ("GOLD_APPROVED","SUBGOLD_REVIEW","REJECTED")}; reasons=Counter(x["rule_id"] for x in issues)
-    (QUALITY/"daily_quality_summary.md").write_text("# Data Sanity v1\n\n"+f"- Timestamp: {now}\n- Series auditadas: {len(status_rows)}\n- GOLD_APPROVED: {len(groups['GOLD_APPROVED'])}\n- SUBGOLD_REVIEW: {len(groups['SUBGOLD_REVIEW'])}\n- REJECTED: {len(groups['REJECTED'])}\n- Sesiones de consenso faltantes: {reasons['R7']}\n- Corridas de barras idénticas: {reasons['R8']}\n- Silver no fue modificado.\n- Calendario: `CONSENSUS_US_SESSION_CALENDAR_V1` es provisional y no sustituye un calendario bursátil oficial.\n\n"+"## Instrumentos por estado\n\n"+"\n".join(f"- {k}: {', '.join(v) or 'ninguno'}" for k,v in groups.items())+"\n\n## Motivos por regla\n\n"+"\n".join(f"- {k}: {v}" for k,v in sorted(reasons.items()))+"\n\n## Gold promovidos\n\n"+"\n".join(f"- {r['asset_class']}/{r['symbol_requested']}" for r in status_rows if r['gold_path']),encoding="utf-8")
-    print(f"AUDITED={len(status_rows)} GOLD_APPROVED={len(groups['GOLD_APPROVED'])} SUBGOLD_REVIEW={len(groups['SUBGOLD_REVIEW'])} REJECTED={len(groups['REJECTED'])}")
+    (quality_root/"daily_quality_summary.md").write_text("# Data Sanity v1\n\n"+f"- Timestamp: {now}\n- Series auditadas: {len(status_rows)}\n- GOLD_APPROVED: {len(groups['GOLD_APPROVED'])}\n- SUBGOLD_REVIEW: {len(groups['SUBGOLD_REVIEW'])}\n- REJECTED: {len(groups['REJECTED'])}\n- Promoción Gold: {'desactivada' if args.no_promote else 'habilitada'}\n- Sesiones de consenso faltantes: {reasons['R7']}\n- Corridas de barras idénticas: {reasons['R8']}\n- Silver no fue modificado.\n- Calendario: `CONSENSUS_US_SESSION_CALENDAR_V1` es provisional y no sustituye un calendario bursátil oficial.\n\n"+"## Instrumentos por estado\n\n"+"\n".join(f"- {k}: {', '.join(v) or 'ninguno'}" for k,v in groups.items())+"\n\n## Motivos por regla\n\n"+"\n".join(f"- {k}: {v}" for k,v in sorted(reasons.items()))+"\n\n## Gold promovidos\n\n"+"\n".join(f"- {r['asset_class']}/{r['symbol_requested']}" for r in status_rows if r['gold_path']),encoding="utf-8")
+    print(f"AUDITED={len(status_rows)} GOLD_APPROVED={len(groups['GOLD_APPROVED'])} SUBGOLD_REVIEW={len(groups['SUBGOLD_REVIEW'])} REJECTED={len(groups['REJECTED'])} PROMOTE={'NO' if args.no_promote else 'YES'}")
 if __name__=="__main__": main()
